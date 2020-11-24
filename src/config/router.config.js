@@ -38,7 +38,7 @@ export const asyncRouterMap = [
             path: '/system/department',
             name: 'department',
             meta: {
-              title: '部门管理'
+              title: '订单查询'
             },
             component: () => import('@/views/system/Department/index')
           },
@@ -46,9 +46,26 @@ export const asyncRouterMap = [
             path: '/system/suser',
             name: 'suser',
             meta: {
-              title: '用户管理'
+              title: '活动查询'
+            },
+
+          },
+          {
+            path: '/system/user',
+            name: 'user',
+            meta: {
+              title: '用户查询'
             },
             component: () => import('@/views/system/User/index')
+
+          },
+          {
+            path: '/system/stock',
+            name: 'stock',
+            meta: {
+              title: '库存查询'
+            },
+
           }
         ]
       },
