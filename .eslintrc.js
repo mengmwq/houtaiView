@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2020-11-24 14:55:17
+ * @LastEditTime: 2020-11-25 12:06:43
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: \wlgl-antd\.eslintrc.js
+ */
 module.exports = {
   root: true,
   env: {
@@ -5,7 +13,7 @@ module.exports = {
   },
   extends: [
     'plugin:vue/essential',
-    '@vue/standard'
+    // '@vue/standard'
   ],
   parserOptions: {
     parser: 'babel-eslint'

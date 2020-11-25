@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-25 11:10:16
- * @LastEditTime: 2020-11-25 13:36:51
+ * @LastEditTime: 2020-11-25 13:16:43
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \wlgl-antd\src\views\system\Activity\index.vue
@@ -13,10 +13,10 @@
         <a-form layout="inline">
           <a-row :gutter="48">
             <a-col :md="18" :sm="24">
-              <a-form-item label="手机号">
+              <a-form-item label="商品SKU编码">
                 <a-input
                   v-model="queryParam.gongsimingcheng"
-                  placeholder="请输入正确的手机号"
+                  placeholder="请输入正确的sku编码"
                 />
               </a-form-item>
             </a-col>
@@ -43,8 +43,6 @@
         :alert="false"
         :pagination="{
           showQuickJumper: true,
-          defaultCurrent:2,
-
           showTotal: (total) => `共 ${total} 条记录`,
         }"
       >
@@ -57,48 +55,43 @@
 import STable from "@/components/Table";
 const columns = [
   {
-    title: "真实姓名",
-    dataIndex: "trueName",
+    title: "商品编码",
+    dataIndex: "SKU",
     align: "center",
 
   },
   {
-    title: "手机号",
-    dataIndex: "phone",
+    title: "商品名称",
+    dataIndex: "goodName",
     align: "center",
   },
   {
-    title: "身份证号",
-    dataIndex: "sfz",
+    title: "商城库存",
+    dataIndex: "scK",
     align: "center",
 
   },
   {
-    title: "是否为员工",
-    dataIndex: "isy",
+    title: "未推送库存",
+    dataIndex: "wtK",
     align: "center",
 
   },
    {
-    title: "账号状态",
-    dataIndex: "zhaozt",
+    title: "wms总库存",
+    dataIndex: "wmsZk",
     align: "center",
 
   },
   {
-    title: "禁用原因",
-    dataIndex: "reason",
+    title: "wms锁库存",
+    dataIndex: "wmsSk",
     align: "center",
 
   },
   {
-    title: "是否存在白名单",
-    dataIndex: "isCun",
-    align: "center",
-  },
-   {
-    title: "当年消费金额",
-    dataIndex: "xiaofei",
+    title: "wms可用库存",
+    dataIndex: "wmsKk",
     align: "center",
   }
 ];
@@ -116,25 +109,23 @@ export default {
               data: [
                 {
                   id: 1,
-                  trueName: "mjk",
-                  phone: "15001015778",
-                  sfz: "141034199900120045",
-                  isy: "是",
-                  zhaozt: "使用",
-                  reason: "原因是……",
-                  isCun: "是",
-                  xiaofei:'40000'
+                  SKU: "10303097489",
+                  goodName: "芭比波朗（Bobbi Brown）清透持妆粉底液(0.75号)",
+                  scK: "988",
+                  wtK: "889",
+                  wmsZk: "998",
+                  wmsSk: "678",
+                  wmsKk: "67"
                 },
                   {
                   id: 2,
-                  trueName: "LSL",
-                  phone: "15001066778",
-                  sfz: "141034199900120045",
-                  isy: "否",
-                  zhaozt: "禁用",
-                  reason: "原因是……",
-                  isCun: "是",
-                  xiaofei:'40000'
+                  SKU: "10303097489",
+                  goodName: "芭比波朗（Bobbi Brown）清透持妆粉底液(0.75号)",
+                  scK: "988",
+                  wtK: "889",
+                  wmsZk: "998",
+                  wmsSk: "678",
+                  wmsKk: "67"
                 },
               ],
               pageSize: 10,

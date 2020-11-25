@@ -1,3 +1,4 @@
+
 import BasicLayout from '@/layouts/BasicLayout'
 import UserLayout from '@/layouts/UserLayout'
 
@@ -30,7 +31,7 @@ export const asyncRouterMap = [
         name: 'system',
         meta: {
           title: '数据查询',
-          icon: 'setting'
+          icon: 'tags'
         },
         component: RouteView,
         children: [
@@ -43,21 +44,20 @@ export const asyncRouterMap = [
             component: () => import('@/views/system/Department/index')
           },
           {
-            path: '/system/suser',
-            name: 'suser',
+            path: '/system/activity',
+            name: 'activity',
             meta: {
               title: '活动查询'
             },
-
+            component: () => import('@/views/system/Activity/index')
           },
           {
-            path: '/system/user',
-            name: 'user',
+            path: '/system/suser',
+            name: 'suser',
             meta: {
               title: '用户查询'
             },
             component: () => import('@/views/system/User/index')
-
           },
           {
             path: '/system/stock',
@@ -65,7 +65,7 @@ export const asyncRouterMap = [
             meta: {
               title: '库存查询'
             },
-
+            component: () => import('@/views/system/Stock/index')
           }
         ]
       },
@@ -86,54 +86,6 @@ export const asyncRouterMap = [
               title: '设备管理'
             },
             component: () => import('@/views/business/Device/index')
-          },
-          {
-            path: '/business/transportation',
-            name: 'transportation',
-            meta: {
-              title: '运输管理'
-            },
-            component: () => import('@/views/business/Transportation/index')
-          },
-          {
-            path: '/business/Productname',
-            name: 'Productname',
-            meta: {
-              title: '品名维护'
-            },
-            component: () => import('@/views/business/Productname/index')
-          },
-          {
-            path: '/business/consignment',
-            name: 'consignment',
-            meta: {
-              title: '发货单位'
-            },
-            component: () => import('@/views/business/Consignment/index')
-          },
-          {
-            path: '/business/sign',
-            name: 'sign',
-            meta: {
-              title: '签收单位'
-            },
-            component: () => import('@/views/business/Sign/index')
-          },
-          {
-            path: '/business/store',
-            name: 'store',
-            meta: {
-              title: '库区管理'
-            },
-            component: () => import('@/views/business/Store/index')
-          },
-          {
-            path: '/business/batch',
-            name: 'batch',
-            meta: {
-              title: '批次管理'
-            },
-            component: () => import('@/views/business/Batch')
           }
         ]
       },
@@ -154,46 +106,6 @@ export const asyncRouterMap = [
               title: '通用监控设备'
             },
             component: () => import('@/views/monitor/General')
-          },
-          {
-            path: '/monitor/refrigeration',
-            name: 'refrigeration',
-            meta: {
-              title: '冷库监控设备'
-            },
-            component: () => import('@/views/monitor/Refrigeration')
-          },
-          {
-            path: '/monitor/car',
-            name: 'car',
-            meta: {
-              title: '冷藏车监控设备'
-            },
-            component: () => import('@/views/monitor/Car')
-          },
-          {
-            path: '/monitor/Container',
-            name: 'Container',
-            meta: {
-              title: '集装箱监控设备'
-            },
-            component: () => import('@/views/monitor/Container')
-          },
-          {
-            path: '/monitor/recorder',
-            name: 'recorder',
-            meta: {
-              title: 'U盘记录仪'
-            },
-            component: () => import('@/views/monitor/Recorder')
-          },
-          {
-            path: '/monitor/deliver',
-            name: 'deliver',
-            meta: {
-              title: '运单监控'
-            },
-            component: () => import('@/views/monitor/Deliver')
           }
         ]
       },
@@ -203,7 +115,7 @@ export const asyncRouterMap = [
         component: RouteView,
         redirect: '/warning/check',
         meta: {
-          title: '预警管理',
+          title: '隐藏模块',
           breadcrumbName: '预警管理',
           icon: 'warning'
         },
@@ -226,28 +138,7 @@ export const asyncRouterMap = [
             component: () => import('@/views/warning/Record')
           }
         ]
-      },
-      {
-        path: '/history',
-        name: 'history',
-        component: RouteView,
-        redirect: '/history/download',
-        meta: {
-          title: '隐藏模块',
-          icon: 'history'
-        },
-        children: [
-          {
-            path: '/history/download',
-            name: 'download',
-            meta: {
-              title: 'PDF下载详情'
-            },
-            component: () => import('@/views/history/Download')
-          }
-        ]
       }
-
     ]
   }
 ]

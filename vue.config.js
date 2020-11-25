@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-24 14:55:17
- * @LastEditTime: 2020-11-24 15:42:28
+ * @LastEditTime: 2020-11-25 11:54:31
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \wlgl-antd\vue.config.js
@@ -73,8 +73,8 @@ const vueConfig = {
         modifyVars: {
           // less vars，customize ant design theme
 
-          'primary-color': '#C02A21',
-           'link-color': '#CF3F3B',
+          'primary-color': '#FD7878',
+           'link-color': '#FD7878',
           'border-radius-base': '2px'
         },
         // DO NOT REMOVE THIS LINE
