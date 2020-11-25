@@ -96,7 +96,7 @@ export const asyncRouterMap = [
         redirect: '/monitor/general',
         meta: {
           title: '异常业务处理',
-          icon: 'bar-chart'
+          icon: 'icon-rizhiyichang'
         },
         children: [
           {
@@ -117,7 +117,7 @@ export const asyncRouterMap = [
         meta: {
           title: '隐藏模块',
           breadcrumbName: '预警管理',
-          icon: 'warning'
+          icon: 'icon-yincang'
         },
         children: [
           {

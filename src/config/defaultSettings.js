@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-24 14:55:17
- * @LastEditTime: 2020-11-25 11:50:07
+ * @LastEditTime: 2020-11-25 16:29:20
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \wlgl-antd\src\config\defaultSettings.js
@@ -33,7 +33,7 @@ export default {
   },
   title: '火凤凰电商数据平台',
   pwa: false,
-  iconfontUrl: '',
+  iconfontUrl: require('../assets/iconfont/iconfont'),
   production: process.env.NODE_ENV === 'production' && process.env.VUE_APP_PREVIEW !== 'true',
   baseUrl: {
     default: '//www.ccsc58.com'

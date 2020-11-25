@@ -1,0 +1,37 @@
+{
+  "id": "2228622",
+  "name": "houtai",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "5334216",
+      "name": "预警",
+      "font_class": "yujing",
+      "unicode": "e634",
+      "unicode_decimal": 58932
+    },
+    {
+      "icon_id": "7319068",
+      "name": "异常答复",
+      "font_class": "rizhiyichang",
+      "unicode": "e617",
+      "unicode_decimal": 58903
+    },
+    {
+      "icon_id": "7561116",
+      "name": "隐藏",
+      "font_class": "yincang",
+      "unicode": "e7c2",
+      "unicode_decimal": 59330
+    },
+    {
+      "icon_id": "13493360",
+      "name": "数据查询",
+      "font_class": "shujuchaxun",
+      "unicode": "e65f",
+      "unicode_decimal": 58975
+    }
+  ]
+}
