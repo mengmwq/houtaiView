@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-25 11:10:16
- * @LastEditTime: 2020-11-26 19:28:16
+ * @LastEditTime: 2020-11-26 23:33:40
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \wlgl-antd\src\views\system\Activity\index.vue
@@ -15,7 +15,7 @@
             <a-col :md="18" :sm="24">
               <a-form-item label="商品SKU编码">
                 <a-input
-                  v-model="goodsInfoNo"
+                  v-model="queryParam.goodsInfoNo"
                   placeholder="请输入正确的sku编码"
                 />
               </a-form-item>
@@ -25,22 +25,29 @@
                 class="table-page-search-submitButtons"
                 style="float: right"
               >
-                <a-button type="primary">查询</a-button>
-                <a-button style="margin-left: 8px" @click="downloading">下载活动表格</a-button>
+                <a-button type="primary" @click="GetQueryList()">查询</a-button>
+                <a-button style="margin-left: 8px" @click="downloading"
+                  >下载活动表格</a-button
+                >
               </span>
             </a-col>
           </a-row>
         </a-form>
       </div>
 
-      <a-table  :loading="loading" :columns="columns" :data-source="tableData"  :rowKey="(item,index)=>index"></a-table>
-
+      <a-table
+        :loading="loading"
+        :columns="columns"
+        :data-source="tableData"
+        :rowKey="(item, index) => index"
+         :pagination="pagination"
+        @change="handleTableChange"
+      ></a-table>
     </a-card>
   </page-header-wrapper>
 </template>
 
 <script>
-
 import { GetUserList } from "@/api/system";
 const columns = [
   {
@@ -104,35 +111,58 @@ const columns = [
   },
 ];
 export default {
-
   data() {
     return {
       columns,
-      tableData:[],
-      goodsInfoNo: '',
-      loading:true,
+      tableData: [],
+
+      loading: true,
+      pagination: {
+        total: 0,
+        pageSize: 10, //每页中显示10条数据
+        showSizeChanger: true,
+        pageSizeOptions: ["10", "20", "50", "100"], //每页中显示的数据
+        showTotal: (total) => `共有 ${total} 条数据`, //分页中显示总的数据
+      },
+      queryParam: {
+        pageNum: 1, //第几页
+        pageSize: 10, //每页中显示数据的条数
+        goodsInfoNo: "",
+      },
     };
   },
- mounted() {
-    this.GetQueryList();
+  mounted() {
+   /*  this.GetQueryList(); */
   },
-  methods:{
+  methods: {
     //下载活动列表
-    downloading(){
-      console.log(1)
+    downloading() {
+      console.log(1);
     },
     async GetQueryList() {
-      const data = {
-        goodsInfoNo: this.goodsInfoNo,
-        pageNum: 1,
-        pageSize: 10,
-      };
-      const res = await GetUserList(data);
-      this.tableData= (res.data.result)
-      this.loading =false
+      const queryParam ={
+        pageNum: 1, //第几页
+        pageSize: 10, //每页中显示数据的条数
+        goodsInfoNo: this.pagination,
+      }
+
+      const res = await GetUserList(this.queryParam);
+      const pagination = { ...this.pagination };
+      pagination.total = res.data.totalCount;
+      this.tableData = res.data.result;
+      this.pagination = pagination;
+
+      this.loading = false;
+    },
+    handleTableChange(pagination) {
+      console.log(pagination,'pageNum')
+      this.pagination.current = pagination.current;
+      this.pagination.pageSize = pagination.pageSize;
+      this.queryParam.pageNum = pagination.current;
+      this.queryParam.pageSize = pagination.pageSize;
+      this.GetQueryList();
     },
   },
-
 };
 </script>
 

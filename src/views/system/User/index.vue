@@ -1,7 +1,7 @@
 <!--
  * @Author: mjk
  * @Date: 2020-11-25 11:10:16
- * @LastEditTime: 2020-11-26 19:27:05
+ * @LastEditTime: 2020-11-26 23:00:14
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \wlgl-antd\src\views\system\Activity\index.vue
@@ -73,7 +73,7 @@
 </template>
 
 <script>
-import { GetUserList } from "@/api/system";
+
 export default {
   data() {
     return {
@@ -81,19 +81,10 @@ export default {
     };
   },
   mounted() {
-    this.GetQueryList();
+
   },
   methods: {
-    async GetQueryList() {
-      const data = {
-        goodsInfoNo: "10302084172",
-        pageNum: 1,
-        pageSize: 10,
-      };
 
-      const res = await GetUserList(data);
-      console.log(res.data);
-    },
   },
 };
 </script>
