@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-25 11:10:16
- * @LastEditTime: 2020-11-26 23:39:10
+ * @LastEditTime: 2020-11-26 23:42:51
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \wlgl-antd\src\views\system\Activity\index.vue
@@ -116,7 +116,7 @@ export default {
       columns,
       tableData: [],
 
-      loading: true,
+      loading: false,
       pagination: {
         total: 0,
         pageSize: 10, //每页中显示10条数据
@@ -141,6 +141,7 @@ export default {
       console.log(1);
     },
     async GetQueryList() {
+      this.loading=true;
       const queryParam ={
         pageNum: 1, //第几页
         pageSize: 10, //每页中显示数据的条数
