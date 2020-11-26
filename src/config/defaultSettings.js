@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-24 14:55:17
- * @LastEditTime: 2020-11-25 16:29:20
+ * @LastEditTime: 2020-11-26 18:22:06
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \wlgl-antd\src\config\defaultSettings.js
@@ -36,6 +36,6 @@ export default {
   iconfontUrl: require('../assets/iconfont/iconfont'),
   production: process.env.NODE_ENV === 'production' && process.env.VUE_APP_PREVIEW !== 'true',
   baseUrl: {
-    default: '//www.ccsc58.com'
+    default: 'http://192.168.2.208:8888/Dataplatform/'
   }
 }

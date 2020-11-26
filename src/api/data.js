@@ -8,3 +8,5 @@ export const initMap = data => axios.request({
   url: '/json/wenkong/shouye_map.php',
   data
 })
+
+

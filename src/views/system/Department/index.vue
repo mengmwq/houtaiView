@@ -59,14 +59,14 @@
     </a-card>
 
     <a-modal v-model="isShowAddModal" title="添加">
-      <add-form></add-form>
+
     </a-modal>
   </page-header-wrapper>
 </template>
 
 <script>
 import STable from '@/components/Table'
-import AddForm from './add'
+
 const columns = [
   {
     title: '部门名称',
@@ -116,7 +116,7 @@ const columns = [
 export default {
   components: {
     STable,
-    AddForm
+
   },
   data () {
     return {

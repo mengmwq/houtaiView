@@ -1,7 +1,7 @@
 <!--
  * @Author: mjk
  * @Date: 2020-11-25 11:10:16
- * @LastEditTime: 2020-11-26 14:58:17
+ * @LastEditTime: 2020-11-26 19:27:05
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \wlgl-antd\src\views\system\Activity\index.vue
@@ -25,7 +25,7 @@
                 class="table-page-search-submitButtons"
                 style="float: right"
               >
-                <a-button type="primary" >查询</a-button>
+                <a-button type="primary" @click="GetQueryList">查询</a-button>
                 <!-- <a-button style="margin-left: 8px">下载活动表格</a-button> -->
               </span>
             </a-col>
@@ -33,9 +33,9 @@
         </a-form>
       </div>
     </a-card>
-      <div style="padding: 20px 0">
+    <div style="padding: 20px 0">
       <a-card class="listCb">
-        <a-row :gutter="24" >
+        <a-row :gutter="24">
           <a-col :span="4">
             <p>真实姓名：<span>张友帅</span></p>
           </a-col>
@@ -43,7 +43,7 @@
             <p>手机号：<span>150001015778</span></p>
           </a-col>
         </a-row>
-         <a-row :gutter="24">
+        <a-row :gutter="24">
           <a-col :span="4">
             <p>身份证号：<span>141024199708098878</span></p>
           </a-col>
@@ -66,7 +66,6 @@
           <a-col :span="12" :offset="2">
             <p>当年消费金额：<span>25394</span></p>
           </a-col>
-
         </a-row>
       </a-card>
     </div>
@@ -74,11 +73,27 @@
 </template>
 
 <script>
+import { GetUserList } from "@/api/system";
 export default {
   data() {
     return {
       queryParam: {},
     };
+  },
+  mounted() {
+    this.GetQueryList();
+  },
+  methods: {
+    async GetQueryList() {
+      const data = {
+        goodsInfoNo: "10302084172",
+        pageNum: 1,
+        pageSize: 10,
+      };
+
+      const res = await GetUserList(data);
+      console.log(res.data);
+    },
   },
 };
 </script>

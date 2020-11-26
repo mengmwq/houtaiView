@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-24 14:55:17
- * @LastEditTime: 2020-11-25 11:54:31
+ * @LastEditTime: 2020-11-26 18:26:05
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \wlgl-antd\vue.config.js
@@ -73,8 +73,8 @@ const vueConfig = {
         modifyVars: {
           // less vars，customize ant design theme
 
-          'primary-color': '#FD7878',
-           'link-color': '#FD7878',
+          // 'primary-color': '#FD7878',
+          //  'link-color': '#FD7878',
           'border-radius-base': '2px'
         },
         // DO NOT REMOVE THIS LINE
@@ -86,7 +86,7 @@ const vueConfig = {
     // If you want to turn on the proxy, please remove the mockjs /src/main.jsL11
     proxy: {
       '/json': {
-        target: '//www.ccsc58.com',
+        target: 'http://192.168.2.208:8888/Dataplatform/',
         ws: false,
         // pathRewrite: '^/',
         changeOrigin: true

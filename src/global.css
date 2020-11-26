@@ -1,0 +1,44 @@
+html,
+body,
+#app,
+#root {
+  height: 100%;
+}
+.ant-layout-footer {
+  display: none;
+}
+.table-alert {
+  margin-bottom: 16px;
+}
+.table-operator {
+  margin-bottom: 18px;
+}
+.table-operator button {
+  margin-right: 8px;
+}
+.table-page-search-wrapper.listT {
+  margin-bottom: 20px;
+}
+.table-page-search-wrapper .table-page-search-input {
+  width: 150px;
+}
+.table-page-search-wrapper .table-page-search-btns {
+  display: inline-block;
+  margin-bottom: 12px;
+  white-space: nowrap;
+}
+.table-page-search-wrapper .table-page-search-btns .btn-right {
+  margin-left: 8px;
+}
+.table-action-btn {
+  margin: 4px;
+}
+.ant-pro-top-nav-header-menu {
+  max-width: 830px !important;
+}
+.listCb p {
+  margin-bottom: 30px;
+}
+.listCb p span {
+  font-weight: 700;
+}

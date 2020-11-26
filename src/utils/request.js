@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2020-11-24 14:55:17
+ * @LastEditTime: 2020-11-26 18:58:32
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: \wlgl-antd\src\utils\request.js
+ */
 import axios from 'axios'
 // import { getToken } from '@/libs/util'
 
@@ -11,7 +19,7 @@ class HttpRequest {
     const config = {
       baseURL: this.baseUrl,
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+        'Content-Type': 'application/json;charset=utf-8'
       }
     }
     return config
