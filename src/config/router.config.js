@@ -31,7 +31,7 @@ export const asyncRouterMap = [
         name: 'system',
         meta: {
           title: '数据查询',
-          icon: 'tags'
+          icon: ' icon-shujuchaxun'
         },
         component: RouteView,
         children: [
@@ -76,7 +76,7 @@ export const asyncRouterMap = [
         redirect: '/business/device',
         meta: {
           title: '业务预警',
-          icon: 'profile'
+          icon: ' icon-yujing'
         },
         children: [
           {
@@ -96,7 +96,7 @@ export const asyncRouterMap = [
         redirect: '/monitor/general',
         meta: {
           title: '异常业务处理',
-          icon: 'icon-rizhiyichang'
+          icon: ' icon-rizhiyichang'
         },
         children: [
           {
@@ -106,36 +106,6 @@ export const asyncRouterMap = [
               title: '通用监控设备'
             },
             component: () => import('@/views/monitor/General')
-          }
-        ]
-      },
-      {
-        path: '/warning',
-        name: 'warning',
-        component: RouteView,
-        redirect: '/warning/check',
-        meta: {
-          title: '隐藏模块',
-          breadcrumbName: '预警管理',
-          icon: 'icon-yincang'
-        },
-        children: [
-          {
-            path: '/warning/check',
-            name: 'check',
-            meta: {
-              title: '预警信息查询',
-              breadcrumbName: '预警信息查询'
-            },
-            component: () => import('@/views/warning/Check')
-          },
-          {
-            path: '/warning/record',
-            name: 'record',
-            meta: {
-              title: '预警处理记录'
-            },
-            component: () => import('@/views/warning/Record')
           }
         ]
       }

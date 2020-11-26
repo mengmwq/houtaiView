@@ -1,7 +1,7 @@
 <!--
- * @Author: your name
+ * @Author: mjk
  * @Date: 2020-11-25 11:10:16
- * @LastEditTime: 2020-11-25 13:36:51
+ * @LastEditTime: 2020-11-26 14:58:17
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \wlgl-antd\src\views\system\Activity\index.vue
@@ -25,127 +25,58 @@
                 class="table-page-search-submitButtons"
                 style="float: right"
               >
-                <a-button type="primary">查询</a-button>
+                <a-button type="primary" >查询</a-button>
                 <!-- <a-button style="margin-left: 8px">下载活动表格</a-button> -->
               </span>
             </a-col>
           </a-row>
         </a-form>
       </div>
-
-      <s-table
-        ref="table"
-        size="middle"
-        :columns="columns"
-         :rowKey="row => row.id"
-        :data="loadData"
-        :bordered="true"
-        :alert="false"
-        :pagination="{
-          showQuickJumper: true,
-          defaultCurrent:2,
-
-          showTotal: (total) => `共 ${total} 条记录`,
-        }"
-      >
-      </s-table>
     </a-card>
+      <div style="padding: 20px 0">
+      <a-card class="listCb">
+        <a-row :gutter="24" >
+          <a-col :span="4">
+            <p>真实姓名：<span>张友帅</span></p>
+          </a-col>
+          <a-col :span="12" :offset="2">
+            <p>手机号：<span>150001015778</span></p>
+          </a-col>
+        </a-row>
+         <a-row :gutter="24">
+          <a-col :span="4">
+            <p>身份证号：<span>141024199708098878</span></p>
+          </a-col>
+          <a-col :span="12" :offset="2">
+            <p>是否为员工：<span>是</span></p>
+          </a-col>
+        </a-row>
+        <a-row :gutter="24">
+          <a-col :span="4">
+            <p>账号状态：<span>启用</span></p>
+          </a-col>
+          <a-col :span="12" :offset="2">
+            <p>禁用原因：<span>130</span></p>
+          </a-col>
+        </a-row>
+        <a-row :gutter="24">
+          <a-col :span="4">
+            <p>是否存在白名单：<span>10</span></p>
+          </a-col>
+          <a-col :span="12" :offset="2">
+            <p>当年消费金额：<span>25394</span></p>
+          </a-col>
+
+        </a-row>
+      </a-card>
+    </div>
   </page-header-wrapper>
 </template>
 
 <script>
-import STable from "@/components/Table";
-const columns = [
-  {
-    title: "真实姓名",
-    dataIndex: "trueName",
-    align: "center",
-
-  },
-  {
-    title: "手机号",
-    dataIndex: "phone",
-    align: "center",
-  },
-  {
-    title: "身份证号",
-    dataIndex: "sfz",
-    align: "center",
-
-  },
-  {
-    title: "是否为员工",
-    dataIndex: "isy",
-    align: "center",
-
-  },
-   {
-    title: "账号状态",
-    dataIndex: "zhaozt",
-    align: "center",
-
-  },
-  {
-    title: "禁用原因",
-    dataIndex: "reason",
-    align: "center",
-
-  },
-  {
-    title: "是否存在白名单",
-    dataIndex: "isCun",
-    align: "center",
-  },
-   {
-    title: "当年消费金额",
-    dataIndex: "xiaofei",
-    align: "center",
-  }
-];
 export default {
-  components: {
-    STable,
-  },
   data() {
     return {
-      columns,
-      loadData: (parameter) => {
-        return new Promise((resolve, reject) => {
-          setTimeout(() => {
-            resolve({
-              data: [
-                {
-                  id: 1,
-                  trueName: "mjk",
-                  phone: "15001015778",
-                  sfz: "141034199900120045",
-                  isy: "是",
-                  zhaozt: "使用",
-                  reason: "原因是……",
-                  isCun: "是",
-                  xiaofei:'40000'
-                },
-                  {
-                  id: 2,
-                  trueName: "LSL",
-                  phone: "15001066778",
-                  sfz: "141034199900120045",
-                  isy: "否",
-                  zhaozt: "禁用",
-                  reason: "原因是……",
-                  isCun: "是",
-                  xiaofei:'40000'
-                },
-              ],
-              pageSize: 10,
-              pageNo: 0,
-              totalPage: 1,
-              totalCount: 1,
-
-            });
-          });
-        });
-      },
       queryParam: {},
     };
   },

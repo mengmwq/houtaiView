@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-25 11:10:16
- * @LastEditTime: 2020-11-25 13:16:43
+ * @LastEditTime: 2020-11-26 14:46:32
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \wlgl-antd\src\views\system\Activity\index.vue
@@ -32,111 +32,48 @@
           </a-row>
         </a-form>
       </div>
-
-      <s-table
-        ref="table"
-        size="middle"
-        :columns="columns"
-         :rowKey="row => row.id"
-        :data="loadData"
-        :bordered="true"
-        :alert="false"
-        :pagination="{
-          showQuickJumper: true,
-          showTotal: (total) => `共 ${total} 条记录`,
-        }"
-      >
-      </s-table>
     </a-card>
+    <div style="padding: 20px 0">
+      <a-card class="listCb">
+        <a-row :gutter="24" >
+          <a-col :span="4">
+            <p>商品编码：<span>103445</span></p>
+          </a-col>
+          <a-col :span="12" :offset="2">
+            <p>商品名称：<span>芭比波朗（Bobbi Brow）好high会更好</span></p>
+          </a-col>
+        </a-row>
+         <a-row :gutter="24">
+          <a-col :span="4">
+            <p>商城库存：<span>120</span></p>
+          </a-col>
+          <a-col :span="12" :offset="2">
+            <p>未推送库存：<span>10</span></p>
+          </a-col>
+        </a-row>
+        <a-row :gutter="24">
+          <a-col :span="4">
+            <p>wms总库存：<span>150</span></p>
+          </a-col>
+          <a-col :span="12" :offset="2">
+            <p>wms可用库存：<span>130</span></p>
+          </a-col>
+        </a-row>
+        <a-row :gutter="24">
+          <a-col :span="4">
+            <p>wms锁库存：<span>10</span></p>
+          </a-col>
+
+        </a-row>
+      </a-card>
+    </div>
   </page-header-wrapper>
 </template>
 
 <script>
-import STable from "@/components/Table";
-const columns = [
-  {
-    title: "商品编码",
-    dataIndex: "SKU",
-    align: "center",
-
-  },
-  {
-    title: "商品名称",
-    dataIndex: "goodName",
-    align: "center",
-  },
-  {
-    title: "商城库存",
-    dataIndex: "scK",
-    align: "center",
-
-  },
-  {
-    title: "未推送库存",
-    dataIndex: "wtK",
-    align: "center",
-
-  },
-   {
-    title: "wms总库存",
-    dataIndex: "wmsZk",
-    align: "center",
-
-  },
-  {
-    title: "wms锁库存",
-    dataIndex: "wmsSk",
-    align: "center",
-
-  },
-  {
-    title: "wms可用库存",
-    dataIndex: "wmsKk",
-    align: "center",
-  }
-];
 export default {
-  components: {
-    STable,
-  },
   data() {
     return {
-      columns,
-      loadData: (parameter) => {
-        return new Promise((resolve, reject) => {
-          setTimeout(() => {
-            resolve({
-              data: [
-                {
-                  id: 1,
-                  SKU: "10303097489",
-                  goodName: "芭比波朗（Bobbi Brown）清透持妆粉底液(0.75号)",
-                  scK: "988",
-                  wtK: "889",
-                  wmsZk: "998",
-                  wmsSk: "678",
-                  wmsKk: "67"
-                },
-                  {
-                  id: 2,
-                  SKU: "10303097489",
-                  goodName: "芭比波朗（Bobbi Brown）清透持妆粉底液(0.75号)",
-                  scK: "988",
-                  wtK: "889",
-                  wmsZk: "998",
-                  wmsSk: "678",
-                  wmsKk: "67"
-                },
-              ],
-              pageSize: 10,
-              pageNo: 0,
-              totalPage: 1,
-              totalCount: 1,
-
-            });
-          });
-        });
-      },
       queryParam: {},
     };
   },
@@ -144,5 +81,6 @@ export default {
 </script>
 
 <style>
+
 </style>
 

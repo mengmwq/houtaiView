@@ -9,7 +9,7 @@
 <template>
   <page-header-wrapper :title="false">
     <a-card :bordered="false">
-      <div class="table-page-search-wrapper">
+      <div class="table-page-search-wrapper listT">
         <a-form layout="inline">
           <a-row :gutter="48">
             <a-col :md="18" :sm="24">
