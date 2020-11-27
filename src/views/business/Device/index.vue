@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-25 11:10:16
- * @LastEditTime: 2020-11-27 16:40:29
+ * @LastEditTime: 2020-11-27 18:06:00
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \wlgl-antd\src\views\system\Activity\index.vue
@@ -58,13 +58,13 @@ import { selectNotInShopSkuList, ExportMarketing } from "@/api/device";
 const columns = [
   {
     title: "sku编码",
-    dataIndex: "goodsInfoNo",
+    dataIndex: "sku",
     align: "center",
     width: 150,
   },
   {
     title: "wms商品名称",
-    dataIndex: "goodsInfoName",
+    dataIndex: "goodsName",
     align: "center",
   },
 ];
@@ -91,7 +91,8 @@ export default {
     };
   },
   mounted() {
-    /*  this.GetWarningList(); */
+
+     this.GetWarningList();
   },
   methods: {
     //下载活动列表
@@ -112,7 +113,6 @@ export default {
       pagination.total = res.data.totalCount;
       this.tableData = res.data.result;
       this.pagination = pagination;
-
       this.loading = false;
     },
     handleTableChange(pagination) {
@@ -121,7 +121,7 @@ export default {
       this.pagination.pageSize = pagination.pageSize;
       this.queryParam.pageNum = pagination.current;
       this.queryParam.pageSize = pagination.pageSize;
-      this.GetWarningList();
+      this.GetWarningList(this.queryParam.pageNum=1,this.queryParam.pageSize=10);
     },
   },
 };

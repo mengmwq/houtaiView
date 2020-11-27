@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-25 11:10:16
- * @LastEditTime: 2020-11-27 16:46:52
+ * @LastEditTime: 2020-11-27 17:28:14
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \wlgl-antd\src\views\system\Activity\index.vue
@@ -52,7 +52,7 @@
 </template>
 
 <script>
-import { GetUserList, ExportMarketing } from "@/api/system";
+import { GetUserList, ExportMarketing } from "@/api/active";
 const columns = [
   {
     title: "SKU",
@@ -132,7 +132,7 @@ export default {
       queryParam: {
         pageNum: 1, //第几页
         pageSize: 10, //每页中显示数据的条数
-        goodsInfoNo: "",
+
       },
     };
   },
@@ -142,10 +142,10 @@ export default {
   methods: {
 
     async GetQueryList() {
-      // if (this.goodsInfoNo == undefined) {
-      //   this.$message.warning("商品SKU编码不能为空");
-      //   return false
-      // }
+      if ((this.queryParam.goodsInfoNo == undefined)||(this.queryParam.goodsInfoNo=='')) {
+        this.$message.warning("商品SKU编码不能为空");
+        return false;
+      }
       this.loading = true;
       const queryParam = {
         pageNum: 1, //第几页
@@ -160,6 +160,7 @@ export default {
       this.pagination = pagination;
 
       this.loading = false;
+
     },
     handleTableChange(pagination) {
       console.log(pagination, "pageNum");

@@ -1,7 +1,7 @@
 <!--
  * @Author: mjk
  * @Date: 2020-11-25 11:10:16
- * @LastEditTime: 2020-11-27 17:15:21
+ * @LastEditTime: 2020-11-27 17:22:06
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \wlgl-antd\src\views\system\Activity\index.vue
@@ -399,16 +399,16 @@ export default {
   mounted() {},
   methods: {
     async GetorderNoData() {
-      console.log(this.queryParam.orderNo, "this.orderNo11111111111111");
+
       if ((this.queryParam.orderNo == undefined)||(this.queryParam.orderNo=='')) {
-        this.$message.warning("商品SKU编码不能为空");
+        this.$message.warning("订单号不能为空");
         return false;
       }
 
       const queryParam = {
         orderNo: this.orderNo,
       };
-      console.log(this.queryParam.orderNo, "this.orderNo");
+
 
       const res = await selectOrderDetailByOrderNo(this.queryParam);
       this.showDepartmentList = true;

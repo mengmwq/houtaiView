@@ -1,7 +1,7 @@
 <!--
  * @Author: mjk
  * @Date: 2020-11-25 11:10:16
- * @LastEditTime: 2020-11-27 14:02:53
+ * @LastEditTime: 2020-11-27 17:34:03
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \wlgl-antd\src\views\system\Activity\index.vue
@@ -58,7 +58,7 @@
             <p>账号状态：<span>{{UserData.customerStatus}}</span></p>
           </a-col>
           <a-col :span="12" :offset="2">
-            <p>禁用原因：<span>{{UserData.forbidReason||'暂无'}}</span></p>
+            <p>禁用原因：<span>{{UserData.forbidReason}}</span></p>
           </a-col>
         </a-row>
         <a-row :gutter="24">
@@ -91,10 +91,10 @@ export default {
   },
   methods: {
     async GetUserList() {
-      // if (this.mobile == undefined) {
-      //   this.$message.warning("手机号不能为空");
-      //   return false
-      // }
+     if ((this.queryParam.mobile == undefined)||(this.queryParam.mobile=='')) {
+        this.$message.warning("手机号码不能为空");
+        return false;
+      }
        this.showDataList=true;
        this.loader =true
 
@@ -106,7 +106,7 @@ export default {
       const res = await GetUserData(this.queryParam);
 
 
-      this.UserData = res.data.result;
+      this.UserData = res.data.result|| {};
       this.loader =false
 
     },

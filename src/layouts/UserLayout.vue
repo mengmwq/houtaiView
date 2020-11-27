@@ -1,20 +1,14 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-11-27 13:48:40
+ * @LastEditTime: 2020-11-27 17:18:08
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: \wlgl-antd\src\layouts\UserLayout.vue
+-->
 <template>
   <div id="userLayout" :class="['user-layout-wrapper', isMobile && 'mobile']">
-    <div class="container">
-      <div class="top">
-        <div class="header">
-          <a href="/">
-            <img src="~@/assets/img/logo.svg" class="logo" alt="logo">
-            <span class="title">Ant Design</span>
-          </a>
-        </div>
-        <div class="desc">
-          <!-- Ant Design 是西湖区最具影响力的 Web 设计规范 -->
-        </div>
-      </div>
-
-      <router-view />
-    </div>
+    <router-view />
   </div>
 </template>
 
