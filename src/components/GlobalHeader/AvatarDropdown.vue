@@ -1,3 +1,11 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-11-24 14:55:17
+ * @LastEditTime: 2020-11-27 12:23:19
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: \wlgl-antd\src\components\GlobalHeader\AvatarDropdown.vue
+-->
 <template>
   <a-dropdown v-if="currentUser && currentUser.name" placement="bottomRight">
     <span class="ant-pro-account-avatar">
@@ -52,9 +60,10 @@ export default {
         title: '提示',
         content: '确定要退出吗？',
         onOk: () => {
-          return this.$store.dispatch('Logout').then(() => {
-            this.$router.push({ name: 'login' })
-          })
+          this.$router.push({ name: 'login' })
+          // return this.$store.dispatch('Logout').then(() => {
+          //   this.$router.push({ name: 'login' })
+          // })
         },
         onCancel: () => {}
       })

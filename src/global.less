@@ -5,7 +5,13 @@ body,
 #app, #root {
   height: 100%;
 }
-
+// body{
+//   :global{
+//     .ant-table-thead>th>tr{
+//       background-color: #FF7979!important;
+//     }
+//   }
+// }
 .ant-layout-footer {
   display: none;
 }
@@ -25,7 +31,7 @@ body,
 
 // 数据列表 搜索条件
 .table-page-search-wrapper.listT{
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 .table-page-search-wrapper {
  
@@ -75,8 +81,11 @@ body,
 }
 
 .listCb p {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 .listCb p span {
   font-weight: 700;
+}
+.thead.ant-table-thead{
+  background-color: #FF7979;
 }

@@ -1,10 +1,10 @@
 /*
- * @Author: mjk
- * @Date: 2020-11-26 15:54:12
- * @LastEditTime: 2020-11-27 16:18:19
+ * @Author: your name
+ * @Date: 2020-11-27 11:05:05
+ * @LastEditTime: 2020-11-27 11:08:06
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
- * @FilePath: \wlgl-antd\src\api\system.js
+ * @FilePath: \wlgl-antd\src\api\Stock.js
  */
 import HttpRequest from '@/utils/request'
 import defaultSettings from '@/config/defaultSettings'
@@ -15,9 +15,8 @@ const axios = new HttpRequest(defaultSettings.baseUrl.default)
 //   return axios.request({ url: '/query/selectMarketingBySku', method: 'post', params })
 // }
 //请求活动查询接口
-export const GetUserList = data => axios.request({
+export const GetStockData = data => axios.request({
   method: 'post',
-  url: '/query/selectMarketingBySku',
+  url: '/query/selectAllStockBySku',
   data
 })
-

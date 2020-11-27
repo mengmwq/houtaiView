@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-25 11:10:16
- * @LastEditTime: 2020-11-26 23:42:51
+ * @LastEditTime: 2020-11-27 16:46:52
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \wlgl-antd\src\views\system\Activity\index.vue
@@ -17,6 +17,7 @@
                 <a-input
                   v-model="queryParam.goodsInfoNo"
                   placeholder="请输入正确的sku编码"
+                  @keyup.enter.native="GetQueryList()"
                 />
               </a-form-item>
             </a-col>
@@ -26,8 +27,11 @@
                 style="float: right"
               >
                 <a-button type="primary" @click="GetQueryList()">查询</a-button>
-                <a-button style="margin-left: 8px" @click="downloading"
-                  >下载活动表格</a-button
+                <a-button style="margin-left: 8px"
+                  ><a
+                    href="http://123.57.103.182:8881/execl/exportMarketingForUs?token=5426b177-d0e8-4928-b35b-52ecb471f768"
+                    >下载活动列表</a
+                  ></a-button
                 >
               </span>
             </a-col>
@@ -40,7 +44,7 @@
         :columns="columns"
         :data-source="tableData"
         :rowKey="(item, index) => index"
-         :pagination="pagination"
+        :pagination="pagination"
         @change="handleTableChange"
       ></a-table>
     </a-card>
@@ -48,7 +52,7 @@
 </template>
 
 <script>
-import { GetUserList } from "@/api/system";
+import { GetUserList, ExportMarketing } from "@/api/system";
 const columns = [
   {
     title: "SKU",
@@ -133,20 +137,21 @@ export default {
     };
   },
   mounted() {
-   /*  this.GetQueryList(); */
+    /*  this.GetQueryList(); */
   },
   methods: {
-    //下载活动列表
-    downloading() {
-      console.log(1);
-    },
+
     async GetQueryList() {
-      this.loading=true;
-      const queryParam ={
+      // if (this.goodsInfoNo == undefined) {
+      //   this.$message.warning("商品SKU编码不能为空");
+      //   return false
+      // }
+      this.loading = true;
+      const queryParam = {
         pageNum: 1, //第几页
         pageSize: 10, //每页中显示数据的条数
-        goodsInfoNo: this.pagination,
-      }
+        goodsInfoNo: this.goodsInfoNo,
+      };
 
       const res = await GetUserList(this.queryParam);
       const pagination = { ...this.pagination };
@@ -157,7 +162,7 @@ export default {
       this.loading = false;
     },
     handleTableChange(pagination) {
-      console.log(pagination,'pageNum')
+      console.log(pagination, "pageNum");
       this.pagination.current = pagination.current;
       this.pagination.pageSize = pagination.pageSize;
       this.queryParam.pageNum = pagination.current;

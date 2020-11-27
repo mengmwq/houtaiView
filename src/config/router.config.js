@@ -83,7 +83,7 @@ export const asyncRouterMap = [
             path: '/business/device',
             name: 'device',
             meta: {
-              title: '设备管理'
+              title: '超时未上新预警'
             },
             component: () => import('@/views/business/Device/index')
           }
@@ -125,7 +125,7 @@ export const constantRouterMap = [
         path: '/user/login',
         name: 'login',
         component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login')
-      }
+      },
       // {
       //   path: 'register',
       //   name: 'register',
@@ -137,7 +137,7 @@ export const constantRouterMap = [
       //   component: () => import(/* webpackChunkName: "user" */ '@/views/user/RegisterResult')
       // }
     ]
-  }
+  },
   // {
   //   path: '/404',
   //   component: () => import(/* webpackChunkName: "fail" */ '@/views/exception/404')

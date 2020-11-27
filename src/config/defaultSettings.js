@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-24 14:55:17
- * @LastEditTime: 2020-11-26 18:22:06
+ * @LastEditTime: 2020-11-27 13:56:12
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \wlgl-antd\src\config\defaultSettings.js
@@ -36,6 +36,6 @@ export default {
   iconfontUrl: require('../assets/iconfont/iconfont'),
   production: process.env.NODE_ENV === 'production' && process.env.VUE_APP_PREVIEW !== 'true',
   baseUrl: {
-    default: 'http://192.168.2.208:8888/Dataplatform/'
+    default: 'http://192.168.2.208:8888//Dataplatform/'
   }
 }
