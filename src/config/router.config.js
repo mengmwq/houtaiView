@@ -89,26 +89,19 @@ export const asyncRouterMap = [
           }
         ]
       },
-      {
-        path: '/monitor',
-        name: 'monitor',
-        component: RouteView,
-        redirect: '/monitor/general',
-        meta: {
-          title: '异常业务处理',
-          icon: ' icon-rizhiyichang'
-        },
-        children: [
-          {
-            path: '/monitor/general',
-            name: 'general',
-            meta: {
-              title: '通用监控设备'
-            },
-            component: () => import('@/views/monitor/General')
-          }
-        ]
-      }
+
+        {
+          path: '/monitor',
+          name: 'monitor ',
+          meta: {
+            title: '异常业务处理',
+            icon: ' icon-rizhiyichang'
+          },
+          component: () => import('@/views/monitor')
+        }
+
+
+
     ]
   }
 ]
