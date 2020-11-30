@@ -31,7 +31,7 @@
                 >
                 <a-button style="margin-left: 8px"
                   ><a
-                    href="http://192.168.2.208:8888//Dataplatform/execl/selectNotInShopSku2Execl"
+                    href="http://192.168.2.105:8888//Dataplatform/execl/selectNotInShopSku2Execl"
                     >下载</a
                   ></a-button
                 >
@@ -91,8 +91,7 @@ export default {
     };
   },
   mounted() {
-
-     this.GetWarningList();
+    this.GetWarningList();
   },
   methods: {
     //下载活动列表
@@ -121,7 +120,10 @@ export default {
       this.pagination.pageSize = pagination.pageSize;
       this.queryParam.pageNum = pagination.current;
       this.queryParam.pageSize = pagination.pageSize;
-      this.GetWarningList(this.queryParam.pageNum=1,this.queryParam.pageSize=10);
+      this.GetWarningList(
+        (this.queryParam.pageNum = 1),
+        (this.queryParam.pageSize = 10)
+      );
     },
   },
 };

@@ -64,7 +64,7 @@ const vueConfig = {
   devServer: { // If you want to turn on the proxy, please remove the mockjs /src/main.jsL11
     proxy: {
       '/json': {
-        target: 'http://192.168.2.208:8888/Dataplatform/',
+        target: '172.17.71.130:8881/Dataplatform/',
         ws: false,
         // pathRewrite: '^/',
         changeOrigin: true

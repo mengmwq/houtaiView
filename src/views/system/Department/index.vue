@@ -1,7 +1,7 @@
 <!--
  * @Author: mjk
  * @Date: 2020-11-25 11:10:16
- * @LastEditTime: 2020-11-27 17:22:06
+ * @LastEditTime: 2020-11-30 15:47:22
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \wlgl-antd\src\views\system\Activity\index.vue
@@ -211,18 +211,33 @@
           <a-card>
             <a-row :gutter="24">
               <a-col :span="18">
-                <span
-                  >收货人名称：<strong>{{ consignee.name }}</strong></span
+                <a-row
+                  :gutter="24"
+                  style="  flex-wrap: nowrap; white-space: nowrap"
                 >
-                <span
-                  >省名称：<strong>{{ consignee.provinceName }}</strong></span
-                >
-                <span
-                  >市名：<strong>{{ consignee.cityName }}</strong></span
-                >
-                <span
-                  >地区名：<strong>{{ consignee.areaName }}</strong></span
-                >
+                  <a-col :span="5">
+                    <span
+                      >收货人名称：<strong>{{ consignee.name }}</strong></span
+                    ></a-col
+                  >
+                  <a-col :span="4">
+                    <span
+                      >省名称：<strong>{{
+                        consignee.provinceName
+                      }}</strong></span
+                    ></a-col
+                  >
+                  <a-col :span="4"
+                    ><span
+                      >市名：<strong>{{ consignee.cityName }}</strong></span
+                    ></a-col
+                  >
+                  <a-col :span="5">
+                    <span
+                      >地区名：<strong>{{ consignee.areaName }}</strong></span
+                    ></a-col
+                  >
+                </a-row>
               </a-col>
               <a-col :span="6">
                 <span
@@ -237,18 +252,32 @@
             </a-row>
             <a-row :gutter="24">
               <a-col :span="18">
-                <span
-                  >收货人电话：<strong>{{ consignee.phone }}</strong></span
+                <a-row
+                  :gutter="24"
+                  style="  flex-wrap: nowrap; white-space: nowrap"
                 >
-                <span
-                  >省代码：<strong>{{ consignee.provinceId }}</strong></span
-                >
-                <span
-                  >市代码：<strong>{{ consignee.cityId }}</strong></span
-                >
-                <span
-                  >地区代码：<strong>{{ consignee.areaId }}</strong></span
-                >
+                  <a-col :span="5">
+                    <span
+                      >收货人电话：<strong>{{ consignee.phone }}</strong></span
+                    >
+                  </a-col>
+
+                  <a-col :span="4">
+                    <span
+                      >省代码：<strong>{{ consignee.provinceId }}</strong></span
+                    >
+                  </a-col>
+                  <a-col :span="4">
+                    <span
+                      >市代码：<strong>{{ consignee.cityId }}</strong></span
+                    >
+                  </a-col>
+                  <a-col :span="5">
+                    <span
+                      >地区代码：<strong>{{ consignee.areaId }}</strong></span
+                    >
+                  </a-col>
+                </a-row>
               </a-col>
               <a-col :span="6">
                 <span
@@ -399,8 +428,10 @@ export default {
   mounted() {},
   methods: {
     async GetorderNoData() {
-
-      if ((this.queryParam.orderNo == undefined)||(this.queryParam.orderNo=='')) {
+      if (
+        this.queryParam.orderNo == undefined ||
+        this.queryParam.orderNo == ""
+      ) {
         this.$message.warning("订单号不能为空");
         return false;
       }
@@ -408,7 +439,6 @@ export default {
       const queryParam = {
         orderNo: this.orderNo,
       };
-
 
       const res = await selectOrderDetailByOrderNo(this.queryParam);
       this.showDepartmentList = true;
@@ -423,7 +453,7 @@ export default {
 
       this.loader = false;
 
-      this.queryParam.orderNo =''
+      this.queryParam.orderNo = "";
     },
   },
 };

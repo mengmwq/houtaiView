@@ -41,7 +41,7 @@ export default {
   data() {
     return {
       menus: [],
-      logoSrc: require('@/assets/img/logo.png'),
+      logoSrc: require("@/assets/img/logo.png"),
       collapsed: false,
       title: defaultSettings.title,
       settings: {
@@ -146,9 +146,9 @@ export default {
           break;
       }
     },
-    logoRender () {
-      return <img src="../assets/img/logo.png" />
-    }
+    logoRender() {
+      return <img src="../assets/img/logo.png" />;
+    },
   },
 };
 </script>
@@ -165,10 +165,10 @@ export default {
     padding: 10px 0 10px 0;
   }
 }
-.ant-pro-sider-menu-logo svg, .ant-pro-sider-menu-logo img {
-    height: 103px;
-    width: 216px;
-    vertical-align: middle;
+.ant-pro-sider-menu-logo svg,
+.ant-pro-sider-menu-logo img {
+  height: 103px;
+  width: 216px;
+  vertical-align: middle;
 }
-
 </style>
