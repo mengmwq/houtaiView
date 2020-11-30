@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-24 14:55:17
- * @LastEditTime: 2020-11-27 13:56:12
+ * @LastEditTime: 2020-11-30 11:46:46
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \wlgl-antd\src\config\defaultSettings.js
@@ -22,7 +22,7 @@
 
 export default {
   navTheme: 'light', // theme for nav menu
-  primaryColor: '#FF7979', // primary color of ant design
+  primaryColor: '#FA541C', // primary color of ant design
   layout: 'sidemenu', // nav menu position: `sidemenu` or `topmenu`
   contentWidth: 'Fluid', // layout of content: `Fluid` or `Fixed`, only works when layout is topmenu
   fixedHeader: false, // sticky header
