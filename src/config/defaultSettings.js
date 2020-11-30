@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-24 14:55:17
- * @LastEditTime: 2020-11-30 15:14:10
+ * @LastEditTime: 2020-11-30 18:46:43
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \wlgl-antd\src\config\defaultSettings.js
@@ -25,8 +25,8 @@ export default {
   primaryColor: '#FA541C', // primary color of ant design
   layout: 'sidemenu', // nav menu position: `sidemenu` or `topmenu`
   contentWidth: 'Fluid', // layout of content: `Fluid` or `Fixed`, only works when layout is topmenu
-  fixedHeader: false, // sticky header
-  fixSiderbar: false, // sticky siderbar
+  fixedHeader: true, // sticky header
+  fixSiderbar: true, // sticky siderbar
   colorWeak: false,
   menu: {
     locale: true

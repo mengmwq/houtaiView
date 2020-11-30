@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-25 11:10:16
- * @LastEditTime: 2020-11-27 18:06:00
+ * @LastEditTime: 2020-11-30 19:22:27
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \wlgl-antd\src\views\system\Activity\index.vue
@@ -120,10 +120,7 @@ export default {
       this.pagination.pageSize = pagination.pageSize;
       this.queryParam.pageNum = pagination.current;
       this.queryParam.pageSize = pagination.pageSize;
-      this.GetWarningList(
-        (this.queryParam.pageNum = 1),
-        (this.queryParam.pageSize = 10)
-      );
+      this.GetWarningList();
     },
   },
 };
