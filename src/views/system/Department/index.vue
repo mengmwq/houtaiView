@@ -1,7 +1,7 @@
 <!--
  * @Author: mjk
  * @Date: 2020-11-25 11:10:16
- * @LastEditTime: 2020-12-01 17:11:13
+ * @LastEditTime: 2020-12-01 18:12:57
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \wlgl-antd\src\views\system\Activity\index.vue
@@ -422,6 +422,11 @@ const columns = [
   {
     title: "单位",
     dataIndex: "unit",
+    align: "center",
+  },
+  {
+    title: "商品原价",
+    dataIndex: "originalPrice",
     align: "center",
   },
   {
