@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-25 11:10:16
- * @LastEditTime: 2020-12-01 14:56:12
+ * @LastEditTime: 2020-12-01 15:38:43
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \wlgl-antd\src\views\system\Activity\index.vue
@@ -53,6 +53,7 @@
 
 <script>
 import { GetUserList, ExportMarketing } from "@/api/active";
+let lastSearch = {};
 const columns = [
   {
     title: "SKU",
@@ -114,6 +115,7 @@ const columns = [
     align: "center",
   },
 ];
+
 export default {
   data() {
     return {
@@ -137,27 +139,32 @@ export default {
     };
   },
   mounted() {
-    /*  this.GetQueryList(); */
+    // this.GetQueryList();
   },
   methods: {
     async GetQueryList(flag = true) {
-      if (
-        this.queryParam.goodsInfoNo == undefined ||
-        this.queryParam.goodsInfoNo == ""
-      ) {
-        this.$message.warning("商品SKU编码不能为空");
-        return false;
-      }
       this.loading = true;
       // const queryParam = {
       //   pageNum: 1, //第几页
       //   pageSize: 10, //每页中显示数据的条数
       //   goodsInfoNo: this.goodsInfoNo,
       // };
+
+      // 点击请求
       if (flag) {
+        // 判断有没有
+        if (
+          this.queryParam.goodsInfoNo == undefined ||
+          this.queryParam.goodsInfoNo == ""
+        ) {
+          this.$message.warning("商品SKU编码不能为空");
+          return false;
+        }
         this.queryParam.pageNum = 1;
         this.pagination.current = 1;
       }
+
+      lastSearch = this.queryParam;
 
       const res = await GetUserList(this.queryParam);
       const pagination = { ...this.pagination };
@@ -168,7 +175,9 @@ export default {
       this.loading = false;
     },
     handleTableChange(pagination) {
-      console.log(pagination, "pageNum");
+      if (!this.queryParam.goodsInfoNo) {
+        this.queryParam.goodsInfoNo = lastSearch.goodsInfoNo;
+      }
       this.pagination.current = pagination.current;
       this.pagination.pageSize = pagination.pageSize;
       this.queryParam.pageNum = pagination.current;
