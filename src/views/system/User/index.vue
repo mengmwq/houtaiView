@@ -1,7 +1,7 @@
 <!--
  * @Author: mjk
  * @Date: 2020-11-25 11:10:16
- * @LastEditTime: 2020-11-27 17:34:03
+ * @LastEditTime: 2020-12-01 14:17:50
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \wlgl-antd\src\views\system\Activity\index.vue
@@ -26,7 +26,7 @@
                 class="table-page-search-submitButtons"
                 style="float: right"
               >
-                <a-button type="primary" @click="GetUserList()" >查询</a-button>
+                <a-button type="primary" @click="GetUserList()">查询</a-button>
                 <!-- <a-button style="margin-left: 8px">下载活动表格</a-button> -->
               </span>
             </a-col>
@@ -34,44 +34,60 @@
         </a-form>
       </div>
     </a-card>
-     <a-spin :spinning="loader">
-    <div style="padding: 20px 0" v-show="showDataList">
-      <a-card class="listCb">
-        <a-row :gutter="24">
-          <a-col :span="4">
-            <p>真实姓名：<span>{{UserData.customerName}}</span></p>
-          </a-col>
-          <a-col :span="12" :offset="2">
-            <p>手机号：<span>{{UserData.customerAccount}}</span></p>
-          </a-col>
-        </a-row>
-        <a-row :gutter="24">
-          <a-col :span="4">
-            <p>身份证号：<span>{{UserData.idCardNumber}}</span></p>
-          </a-col>
-          <a-col :span="12" :offset="2">
-            <p>是否为员工：<span>{{UserData.customerCategory}}</span></p>
-          </a-col>
-        </a-row>
-        <a-row :gutter="24">
-          <a-col :span="4">
-            <p>账号状态：<span>{{UserData.customerStatus}}</span></p>
-          </a-col>
-          <a-col :span="12" :offset="2">
-            <p>禁用原因：<span>{{UserData.forbidReason}}</span></p>
-          </a-col>
-        </a-row>
-        <a-row :gutter="24">
-          <a-col :span="4">
-            <p>是否存在白名单：<span>{{UserData.whiteListFlag}}</span></p>
-          </a-col>
-          <a-col :span="12" :offset="2">
-            <p>当年消费金额：<span>{{UserData.totalPrice}}</span></p>
-          </a-col>
-        </a-row>
-      </a-card>
-    </div>
-     </a-spin>
+    <a-spin :spinning="loader">
+      <div style="padding: 20px 0" v-show="showDataList">
+        <a-card class="listCb">
+          <a-row :gutter="24">
+            <a-col :span="4">
+              <p>
+                真实姓名：<span>{{ UserData.customerName }}</span>
+              </p>
+            </a-col>
+            <a-col :span="12" :offset="2">
+              <p>
+                手机号：<span>{{ UserData.customerAccount }}</span>
+              </p>
+            </a-col>
+          </a-row>
+          <a-row :gutter="24">
+            <a-col :span="4">
+              <p>
+                身份证号：<span>{{ UserData.idCardNumber }}</span>
+              </p>
+            </a-col>
+            <a-col :span="12" :offset="2">
+              <p>
+                是否为员工：<span>{{ UserData.customerCategory }}</span>
+              </p>
+            </a-col>
+          </a-row>
+          <a-row :gutter="24">
+            <a-col :span="4">
+              <p>
+                账号状态：<span>{{ UserData.customerStatus }}</span>
+              </p>
+            </a-col>
+            <a-col :span="12" :offset="2">
+              <p>
+                禁用原因：<span>{{ UserData.forbidReason }}</span>
+              </p>
+            </a-col>
+          </a-row>
+          <a-row :gutter="24">
+            <a-col :span="4">
+              <p>
+                是否存在白名单：<span>{{ UserData.whiteListFlag }}</span>
+              </p>
+            </a-col>
+            <a-col :span="12" :offset="2">
+              <p>
+                当年消费金额：<span>{{ UserData.totalPrice }}</span>
+              </p>
+            </a-col>
+          </a-row>
+        </a-card>
+      </div>
+    </a-spin>
   </page-header-wrapper>
 </template>
 
@@ -81,36 +97,32 @@ export default {
   data() {
     return {
       queryParam: {},
-       showDataList:false,
-       loader:false,
-       UserData:{}
+      showDataList: false,
+      loader: false,
+      UserData: {},
     };
   },
-  mounted() {
-
-  },
+  mounted() {},
   methods: {
     async GetUserList() {
-     if ((this.queryParam.mobile == undefined)||(this.queryParam.mobile=='')) {
+      if (this.queryParam.mobile == undefined || this.queryParam.mobile == "") {
         this.$message.warning("手机号码不能为空");
         return false;
       }
-       this.showDataList=true;
-       this.loader =true
+      this.queryParam.pageNum = 1;
+      this.showDataList = true;
+      this.loader = true;
 
-      const queryParam ={
-
+      const queryParam = {
         mobile: this.mobile,
-      }
+      };
 
       const res = await GetUserData(this.queryParam);
 
-
-      this.UserData = res.data.result|| {};
-      this.loader =false
-
+      this.UserData = res.data.result || {};
+      this.loader = false;
+      this.queryParam.mobile = "";
     },
-
   },
 };
 </script>

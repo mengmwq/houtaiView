@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-27 18:18:59
- * @LastEditTime: 2020-11-30 18:29:41
+ * @LastEditTime: 2020-12-01 15:11:04
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \wlgl-antd\src\views\monitor.vue
@@ -11,12 +11,12 @@
     <a-card :bordered="false">
       <div class="table-page-search-wrapper listT">
         <a-row :gutter="24">
-          <a-col :span="24" style="margin-bottom: 20px">
+          <a-col style="margin-bottom: 20px">
             <a-button
               ref="downBtn"
               type="primary"
               icon="download"
-              href="http://192.168.2.105:8888/Dataplatform/execl/downRePushPaymentOrder"
+              href="http://192.168.20.53:8888/Dataplatform/execl/downRePushPaymentOrder"
               download
               @click="downLoadFn"
               :disabled="isDisabled"
@@ -24,8 +24,8 @@
               下载支付单模板</a-button
             >
           </a-col>
-          <a-col :span="24" style="margin-bottom: 20px">
-            <a-row :gutter="24">
+          <a-col style="margin-bottom: 20px">
+            <a-row>
               <a-col :span="2">
                 <a-upload
                   name="file"
@@ -49,7 +49,6 @@
                 >
               </a-col>
             </a-row>
-            <!-- action="172.17.71.130:8881/Dataplatform/execl/rePushPaymentOrder" -->
           </a-col>
           <a-col>
             <a-button type="primary" @click="restWsm()"> 重推wms</a-button>

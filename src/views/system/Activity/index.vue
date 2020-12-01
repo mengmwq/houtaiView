@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-25 11:10:16
- * @LastEditTime: 2020-11-27 17:28:14
+ * @LastEditTime: 2020-12-01 14:56:12
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \wlgl-antd\src\views\system\Activity\index.vue
@@ -132,7 +132,7 @@ export default {
       queryParam: {
         pageNum: 1, //第几页
         pageSize: 10, //每页中显示数据的条数
-
+        goodsInfoNo: "",
       },
     };
   },
@@ -140,18 +140,24 @@ export default {
     /*  this.GetQueryList(); */
   },
   methods: {
-
-    async GetQueryList() {
-      if ((this.queryParam.goodsInfoNo == undefined)||(this.queryParam.goodsInfoNo=='')) {
+    async GetQueryList(flag = true) {
+      if (
+        this.queryParam.goodsInfoNo == undefined ||
+        this.queryParam.goodsInfoNo == ""
+      ) {
         this.$message.warning("商品SKU编码不能为空");
         return false;
       }
       this.loading = true;
-      const queryParam = {
-        pageNum: 1, //第几页
-        pageSize: 10, //每页中显示数据的条数
-        goodsInfoNo: this.goodsInfoNo,
-      };
+      // const queryParam = {
+      //   pageNum: 1, //第几页
+      //   pageSize: 10, //每页中显示数据的条数
+      //   goodsInfoNo: this.goodsInfoNo,
+      // };
+      if (flag) {
+        this.queryParam.pageNum = 1;
+        this.pagination.current = 1;
+      }
 
       const res = await GetUserList(this.queryParam);
       const pagination = { ...this.pagination };
@@ -160,7 +166,6 @@ export default {
       this.pagination = pagination;
 
       this.loading = false;
-
     },
     handleTableChange(pagination) {
       console.log(pagination, "pageNum");
@@ -168,7 +173,7 @@ export default {
       this.pagination.pageSize = pagination.pageSize;
       this.queryParam.pageNum = pagination.current;
       this.queryParam.pageSize = pagination.pageSize;
-      this.GetQueryList();
+      this.GetQueryList(false);
     },
   },
 };

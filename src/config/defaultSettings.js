@@ -36,6 +36,7 @@ export default {
   iconfontUrl: require('../assets/iconfont/iconfont'),
   production: process.env.NODE_ENV === 'production' && process.env.VUE_APP_PREVIEW !== 'true',
   baseUrl: {
-    default: 'http://192.168.2.105:8888/Dataplatform/'
+    default: 'http://192.168.20.53:8888/Dataplatform/'
+
   }
 }

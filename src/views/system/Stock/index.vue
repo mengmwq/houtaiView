@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-25 11:10:16
- * @LastEditTime: 2020-11-27 14:01:53
+ * @LastEditTime: 2020-12-01 13:33:18
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \wlgl-antd\src\views\system\Activity\index.vue
@@ -17,7 +17,7 @@
                 <a-input
                   v-model="queryParam.sku"
                   placeholder="请输入正确的sku编码"
-                   @keyup.enter.native="GetStockList()"
+                  @keyup.enter.native="GetStockList()"
                 />
               </a-form-item>
             </a-col>
@@ -35,40 +35,53 @@
       </div>
     </a-card>
     <a-spin :spinning="loader">
-    <div style="padding: 20px 0" v-show="showDataList">
-      <a-card class="listCb">
-        <a-row :gutter="24" >
-          <a-col :span="4">
-            <p>商品编码：<span>{{StockData.sku}}</span></p>
-          </a-col>
-          <a-col :span="12" :offset="2">
-            <p>商品名称：<span>{{StockData.goodName}}</span></p>
-          </a-col>
-        </a-row>
-         <a-row :gutter="24">
-          <a-col :span="4">
-            <p>商城库存：<span>{{StockData.shopStock}}</span></p>
-          </a-col>
-          <a-col :span="12" :offset="2">
-            <p>未推送库存：<span>{{StockData.notPushStock}}</span></p>
-          </a-col>
-        </a-row>
-        <a-row :gutter="24">
-          <a-col :span="4">
-            <p>wms总库存：<span>{{StockData.wmsTotalStock}}</span></p>
-          </a-col>
-          <a-col :span="12" :offset="2">
-            <p>wms可用库存：<span>{{StockData.wmsAvailableStock}}</span></p>
-          </a-col>
-        </a-row>
-        <a-row :gutter="24">
-          <a-col :span="4">
-            <p>wms锁库存：<span>{{StockData.wmsLockStock}}</span></p>
-          </a-col>
-
-        </a-row>
-      </a-card>
-    </div>
+      <div style="padding: 20px 0" v-show="showDataList">
+        <a-card class="listCb">
+          <a-row :gutter="24">
+            <a-col :span="4">
+              <p>
+                商品编码：<span>{{ StockData.sku }}</span>
+              </p>
+            </a-col>
+            <a-col :span="12" :offset="2">
+              <p>
+                商品名称：<span>{{ StockData.goodName }}</span>
+              </p>
+            </a-col>
+          </a-row>
+          <a-row :gutter="24">
+            <a-col :span="4">
+              <p>
+                商城库存：<span>{{ StockData.shopStock }}</span>
+              </p>
+            </a-col>
+            <a-col :span="12" :offset="2">
+              <p>
+                未推送库存：<span>{{ StockData.notPushStock }}</span>
+              </p>
+            </a-col>
+          </a-row>
+          <a-row :gutter="24">
+            <a-col :span="4">
+              <p>
+                wms总库存：<span>{{ StockData.wmsTotalStock }}</span>
+              </p>
+            </a-col>
+            <a-col :span="12" :offset="2">
+              <p>
+                wms可用库存：<span>{{ StockData.wmsAvailableStock }}</span>
+              </p>
+            </a-col>
+          </a-row>
+          <a-row :gutter="24">
+            <a-col :span="4">
+              <p>
+                wms锁库存：<span>{{ StockData.wmsLockStock }}</span>
+              </p>
+            </a-col>
+          </a-row>
+        </a-card>
+      </div>
     </a-spin>
   </page-header-wrapper>
 </template>
@@ -78,42 +91,38 @@ import { GetStockData } from "@/api/stock";
 export default {
   data() {
     return {
-      StockData:{},
-      showDataList:false,
-       loader:false,
+      StockData: {},
+      showDataList: false,
+      loader: false,
       queryParam: {
-         sku: "",
+        sku: "",
       },
-
     };
   },
-  methods:{
-     async GetStockList() {
-       console.log(this.sku,'hg')
+  methods: {
+    async GetStockList() {
+      console.log(this.sku, "hg");
       //  if (this.sku == undefined) {
       //   this.$message.warning("商品SKU编码不能为空");
       //   return false
       // }
-       this.showDataList=true;
-       this.loader =true
+      this.showDataList = true;
+      this.loader = true;
 
-      const queryParam ={
-
+      const queryParam = {
         sku: this.sku,
-      }
+      };
 
       const res = await GetStockData(this.queryParam);
 
-
       this.StockData = res.data.result;
-      this.loader =false
-
+      this.loader = false;
+      this.queryParam.sku = "";
     },
-  }
+  },
 };
 </script>
 
 <style>
-
 </style>
 

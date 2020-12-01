@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-25 11:10:16
- * @LastEditTime: 2020-11-30 19:22:27
+ * @LastEditTime: 2020-12-01 14:55:37
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \wlgl-antd\src\views\system\Activity\index.vue
@@ -31,7 +31,7 @@
                 >
                 <a-button style="margin-left: 8px"
                   ><a
-                    href="http://192.168.2.105:8888//Dataplatform/execl/selectNotInShopSku2Execl"
+                    href="http://192.168.20.53:8888//Dataplatform/execl/selectNotInShopSku2Execl"
                     >下载</a
                   ></a-button
                 >
@@ -99,13 +99,17 @@ export default {
       const res = await ExportMarketing();
       console.log(res);
     },
-    async GetWarningList() {
+    async GetWarningList(flag = true) {
       this.loading = true;
-      const queryParam = {
+      /* const queryParam = {
         pageNum: 1, //第几页
         pageSize: 10, //每页中显示数据的条数
         sku: this.sku,
-      };
+      }; */
+      if (flag) {
+        this.queryParam.pageNum = 1;
+        this.pagination.current = 1;
+      }
 
       const res = await selectNotInShopSkuList(this.queryParam);
       const pagination = { ...this.pagination };
@@ -115,12 +119,11 @@ export default {
       this.loading = false;
     },
     handleTableChange(pagination) {
-      console.log(pagination, "pageNum");
       this.pagination.current = pagination.current;
       this.pagination.pageSize = pagination.pageSize;
       this.queryParam.pageNum = pagination.current;
       this.queryParam.pageSize = pagination.pageSize;
-      this.GetWarningList();
+      this.GetWarningList(false);
     },
   },
 };
