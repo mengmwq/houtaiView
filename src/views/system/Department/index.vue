@@ -1,7 +1,7 @@
 <!--
  * @Author: mjk
  * @Date: 2020-11-25 11:10:16
- * @LastEditTime: 2020-11-30 15:47:22
+ * @LastEditTime: 2020-12-01 17:11:13
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \wlgl-antd\src\views\system\Activity\index.vue
@@ -52,7 +52,8 @@
                 </a-col>
                 <a-col :span="7">
                   <p>
-                    审核状态：<span>{{ tradeState.auditState }}</span>
+                    发货状态：<span>{{ tradeState.deliverStatus }}</span>
+                    <!-- 审核状态：<span>{{ tradeState.auditState }}</span> -->
                   </p>
                 </a-col>
                 <a-col :span="8">
@@ -64,14 +65,12 @@
               <a-row :gutter="24">
                 <a-col :span="7" :offset="2">
                   <p>
-                    推送支付单错误信息：<span>{{
-                      DepartmentData.payPushErrorMsg
-                    }}</span>
+                    流程状态：<span>{{ tradeState.flowState }}</span>
                   </p>
                 </a-col>
                 <a-col :span="7">
                   <p>
-                    流程状态：<span>{{ tradeState.flowState }}</span>
+                    订单推送WMS状态：<span>{{ tradeState.wmsTradeState }}</span>
                   </p>
                 </a-col>
                 <a-col :span="8">
@@ -83,14 +82,15 @@
               <a-row :gutter="24">
                 <a-col :span="7" :offset="2">
                   <p>
-                    推送支付单状态：<span>{{
-                      DepartmentData.payOrderPushStatus
-                    }}</span>
+                    订单来源：<span>{{ DepartmentData.orderSource }}</span>
                   </p>
                 </a-col>
                 <a-col :span="7">
                   <p>
-                    支付状态：<span>{{ tradeState.payState }}</span>
+                    wms订单状态：<span>{{
+                      DepartmentData.wmsOrderStatus
+                    }}</span>
+                    <!-- 支付状态：<span>{{ tradeState.payState }}</span> -->
                   </p>
                 </a-col>
                 <a-col :span="8">
@@ -102,14 +102,18 @@
               <a-row :gutter="24">
                 <a-col :span="7" :offset="2">
                   <p>
-                    wms订单状态：<span>{{
+                    <!-- wms订单状态：<span>{{
                       DepartmentData.wmsOrderStatus
-                    }}</span>
+                    }}</span> -->
+                    创建时间：<span>{{ tradeState.createTimeStr }}</span>
                   </p>
                 </a-col>
                 <a-col :span="7">
                   <p>
-                    订单推送WMS状态：<span>{{ tradeState.wmsTradeState }}</span>
+                    推送支付单状态：<span>{{
+                      DepartmentData.payOrderPushStatus
+                    }}</span>
+                    <!-- 订单推送WMS状态：<span>{{ tradeState.wmsTradeState }}</span> -->
                   </p>
                 </a-col>
                 <a-col :span="8">
@@ -121,33 +125,40 @@
               <a-row :gutter="24">
                 <a-col :span="7" :offset="2">
                   <p>
-                    订单来源：<span>{{ DepartmentData.orderSource }}</span>
+                    支付时间：<span>{{ tradeState.payTimeStr }}</span>
+                    <!-- 订单来源：<span>{{ DepartmentData.orderSource }}</span> -->
                   </p>
                 </a-col>
                 <a-col :span="8">
                   <p>
-                    发货状态：<span>{{ tradeState.deliverStatus }}</span>
-                  </p>
-                </a-col>
-              </a-row>
-              <a-row :gutter="24">
-                <a-col :span="7" :offset="2">
-                  <p>
-                    微信支付流水号：<span>{{
-                      DepartmentData.transactionId
+                    推送支付单错误信息：<span>{{
+                      DepartmentData.payPushErrorMsg
                     }}</span>
-                  </p>
-                </a-col>
-                <a-col :span="8">
-                  <p>
-                    创建时间：<span>{{ tradeState.createTimeStr }}</span>
+                    <!-- 发货状态：<span>{{ tradeState.deliverStatus }}</span> -->
                   </p>
                 </a-col>
               </a-row>
               <a-row :gutter="24">
                 <a-col :span="7" :offset="2">
                   <p>
-                    订单备注：<span>{{ DepartmentData.buyerRemark }}</span>
+                    商城支付状态：<span>{{ tradeState.payState }}</span>
+                  </p>
+                </a-col>
+                <a-col :span="8">
+                  <p>
+                    cds清单返回值：<span>{{
+                      DepartmentData.cdsReturnStatus
+                    }}</span>
+                    <!-- 创建时间：<span>{{ tradeState.createTimeStr }}</span> -->
+                  </p>
+                </a-col>
+              </a-row>
+              <a-row :gutter="24">
+                <a-col :span="7" :offset="2">
+                  <p>
+                    微信支付状态：<span>{{
+                      DepartmentData.weChatTradeState
+                    }}</span>
                   </p>
                 </a-col>
                 <a-col :span="8">
@@ -166,15 +177,17 @@
                 </a-col>
                 <a-col :span="8">
                   <p>
-                    作废原因：<span>{{ tradeState.obsoleteReason }}</span>
+                    cds返回值详情：<span>{{
+                      DepartmentData.cdsReturnInfo
+                    }}</span>
                   </p>
                 </a-col>
               </a-row>
               <a-row :gutter="24">
                 <a-col :span="7" :offset="2">
                   <p>
-                    cds清单返回值：<span>{{
-                      DepartmentData.cdsReturnStatus
+                    微信支付流水号：<span>{{
+                      DepartmentData.transactionId
                     }}</span>
                   </p>
                 </a-col>
@@ -189,9 +202,12 @@
               <a-row :gutter="24">
                 <a-col :span="7" :offset="2">
                   <p>
-                    cds返回值详情：<span>{{
-                      DepartmentData.cdsReturnInfo
-                    }}</span>
+                    订单备注：<span>{{ DepartmentData.buyerRemark }}</span>
+                  </p>
+                </a-col>
+                <a-col :span="8">
+                  <p>
+                    作废原因：<span>{{ tradeState.obsoleteReason }}</span>
                   </p>
                 </a-col>
               </a-row>
@@ -240,21 +256,32 @@
                 </a-row>
               </a-col>
               <a-col :span="6">
-                <span
-                  >商品总金额：<strong>{{
-                    tradePrice.goodsPrice
-                  }}</strong></span
+                <a-row
+                  :gutter="24"
+                  style="flex-wrap: nowrap; white-space: nowrap"
                 >
-                <span
-                  >原始金额：<strong>{{ tradePrice.originPrice }}</strong></span
-                >
+                  <a-col :span="12"
+                    ><span
+                      >商品总金额：<strong>{{
+                        tradePrice.goodsPrice
+                      }}</strong></span
+                    ></a-col
+                  >
+                  <a-col :span="12">
+                    <span
+                      >原始金额：<strong>{{
+                        tradePrice.originPrice
+                      }}</strong></span
+                    ></a-col
+                  >
+                </a-row>
               </a-col>
             </a-row>
             <a-row :gutter="24">
               <a-col :span="18">
                 <a-row
                   :gutter="24"
-                  style="  flex-wrap: nowrap; white-space: nowrap"
+                  style="flex-wrap: nowrap; white-space: nowrap"
                 >
                   <a-col :span="5">
                     <span
@@ -280,14 +307,23 @@
                 </a-row>
               </a-col>
               <a-col :span="6">
-                <span
-                  >税费金额<strong>{{ tradePrice.taxPrice }}</strong></span
+                <a-row
+                  :gutter="24"
+                  style="flex-wrap: nowrap; white-space: nowrap"
                 >
-                <span
-                  >订单应付金额：<strong>{{
-                    tradePrice.totalPrice
-                  }}</strong></span
-                >
+                  <a-col :span="12">
+                    <span
+                      >税费金额<strong>{{ tradePrice.taxPrice }}</strong></span
+                    >
+                  </a-col>
+                  <a-col :span="12"
+                    ><span
+                      >订单应付金额：<strong>{{
+                        tradePrice.totalPrice
+                      }}</strong></span
+                    ></a-col
+                  >
+                </a-row>
               </a-col>
             </a-row>
             <a-row :gutter="24">
@@ -299,16 +335,25 @@
                 >
               </a-col>
               <a-col :span="6">
-                <span
-                  >优惠金额：<strong>{{
-                    tradePrice.discountsPrice
-                  }}</strong></span
+                <a-row
+                  :gutter="24"
+                  style="flex-wrap: nowrap; white-space: nowrap"
                 >
-                <span
-                  >订单实际支付金额：<strong>{{
-                    tradePrice.totalPayCash
-                  }}</strong></span
-                >
+                  <a-col :span="12">
+                    <span
+                      >优惠金额：<strong>{{
+                        tradePrice.discountsPrice
+                      }}</strong></span
+                    ></a-col
+                  >
+                  <a-col :span="12">
+                    <span
+                      >订单实际支付金额：<strong>{{
+                        tradePrice.totalPayCash
+                      }}</strong></span
+                    ></a-col
+                  >
+                </a-row>
               </a-col>
             </a-row>
           </a-card>

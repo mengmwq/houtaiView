@@ -1,6 +1,7 @@
 <template>
   <pro-layout
     :menus="menus"
+    :title="title"
     :collapsed="collapsed"
     :mediaQuery="query"
     :isMobile="isMobile"
@@ -65,6 +66,7 @@ export default {
       },
       query: {},
       isMobile: false,
+      t: "",
     };
   },
   created() {
@@ -74,9 +76,25 @@ export default {
     // 处理侧栏收起状态
     this.$watch("collapsed", () => {
       this.$store.commit("sidebar_type", this.collapsed);
+      if (this.collapsed) {
+        this.logoSrc = require("@/assets/img/logo2.png");
+        console.log(this.title, "this.");
+        this.title = this.t;
+      } else {
+        this.logoSrc = require("@/assets/img/logo.png");
+        this.title = defaultSettings.title;
+      }
     });
     this.$watch("isMobile", () => {
       this.$store.commit(TOGGLE_MOBILE_TYPE, this.isMobile);
+      if (this.isMobile) {
+        this.logoSrc = require("@/assets/img/logo2.png");
+        this.title = this.t;
+      } else {
+        this.logoSrc = require("@/assets/img/logo.png");
+        this.title = true;
+        this.title = defaultSettings.title;
+      }
     });
   },
   mounted() {
@@ -167,8 +185,11 @@ export default {
 }
 .ant-pro-sider-menu-logo svg,
 .ant-pro-sider-menu-logo img {
-  height: 103px;
-  width: 216px;
+  height: 63px;
+  width: 120px;
   vertical-align: middle;
+}
+.ant-pro-sider-menu-sider.light .ant-pro-sider-menu-logo h1 {
+  color: #000000;
 }
 </style>
