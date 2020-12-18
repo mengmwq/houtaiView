@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-25 11:10:16
- * @LastEditTime: 2020-12-01 15:38:43
+ * @LastEditTime: 2020-12-18 18:35:59
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \wlgl-antd\src\views\system\Activity\index.vue
@@ -27,11 +27,9 @@
                 style="float: right"
               >
                 <a-button type="primary" @click="GetQueryList()">查询</a-button>
-                <a-button style="margin-left: 8px"
-                  ><a
-                    href="http://123.57.103.182:8881/execl/exportMarketingForUs?token=5426b177-d0e8-4928-b35b-52ecb471f768"
-                    >下载活动列表</a
-                  ></a-button
+                <a-button style="margin-left: 8px" @click="export222()"
+                  >下载活动列表
+                  </a-button
                 >
               </span>
             </a-col>
@@ -142,6 +140,22 @@ export default {
     // this.GetQueryList();
   },
   methods: {
+      export222() {
+      const lastTime = localStorage.getItem("lastTime");
+      if (lastTime && lastTime > new Date().getTime()/1000) {
+        //不可以点击
+        this.$message.warning("请不要连续下载！等待一分钟");
+        return false;
+      } // 这里点击的操作
+      var url =
+        "http://123.57.103.182:8881/execl/exportMarketingForUs?token=5426b177-d0e8-4928-b35b-52ecb471f768";
+      window.location.href = url;
+
+      window.localStorage.setItem(
+        "lastTime",
+        (new Date().getTime() / 1000) + 60 * 1
+      );
+    },
     async GetQueryList(flag = true) {
       this.loading = true;
       // const queryParam = {

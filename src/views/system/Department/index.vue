@@ -1,7 +1,7 @@
 <!--
  * @Author: mjk
  * @Date: 2020-11-25 11:10:16
- * @LastEditTime: 2020-12-01 18:12:57
+ * @LastEditTime: 2020-12-17 17:08:51
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \wlgl-antd\src\views\system\Activity\index.vue
@@ -313,7 +313,7 @@
                 >
                   <a-col :span="12">
                     <span
-                      >税费金额<strong>{{ tradePrice.taxPrice }}</strong></span
+                      >税费金额:<strong>{{ tradePrice.taxPrice }}</strong></span
                     >
                   </a-col>
                   <a-col :span="12"
@@ -489,7 +489,6 @@ export default {
       const queryParam = {
         orderNo: this.orderNo,
       };
-
       const res = await selectOrderDetailByOrderNo(this.queryParam);
       this.showDepartmentList = true;
       this.loader = true;
@@ -500,15 +499,12 @@ export default {
       this.tradePrice = res.data.result.tradePrice || {};
       this.tableData = res.data.result.tradeItems || [];
       this.tradeEventLogsData = res.data.result.tradeEventLogs || [];
-
       this.loader = false;
-
       this.queryParam.orderNo = "";
     },
   },
 };
 </script>
-
 <style scope>
 .listspan span {
   margin-right: 20px;

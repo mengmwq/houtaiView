@@ -1,164 +1,147 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-11-30 11:26:18
+ * @LastEditTime: 2020-12-18 16:13:01
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \houtaiView\src\views\monitor\General.vue
+-->
+<!--
+ * @Author: your name
+ * @Date: 2020-11-27 18:18:59
+ * @LastEditTime: 2020-12-18 11:00:59
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \wlgl-antd\src\views\monitor.vue
+-->
 <template>
-  <div>
-    <div class="table-page-search-wrapper">
-      <a-row :gutter="24" type="flex" justify="space-between">
-        <a-col :span="24">
-          <a-form-model layout="inline" :model="queryParam" :colon="false">
-            <a-form-model-item>
-              <a-select :default-value="columns[0].dataIndex" slot="label">
-                  <template v-for="(item, index) in columns">
-                    <a-select-option :key="index" :value="item.dataIndex">{{item.title}}</a-select-option>
-                  </template>
-                </a-select>
-              <a-input v-model="queryParam.number"></a-input>
-            </a-form-model-item>
-            <a-form-model-item>
-              <span class="table-page-search-btns">
-                <a-button type="primary" @click="handleSearch">查询</a-button>
-              </span>
-            </a-form-model-item>
-          </a-form-model>
-        </a-col>
-      </a-row>
-    </div>
-    <a-collapse v-model="activeKey" :bordered="true">
-      <template v-for="(item, index) in lists">
-        <a-collapse-panel :key="index + ''" :header="item.title">
-          <a-list :grid="{ gutter: 24, lg: 4, md: 3, sm: 2, xs: 1 }" :data-source="item.data">
-            <a-list-item slot="renderItem" slot-scope="listItem">
-              <a-card :hoverable="true">
-                <p>设备编号：{{listItem.shebeibianhao}}</p>
-                <p>温度1：{{listItem.last_temperature01}}°C</p>
-                <p>温度2：{{listItem.last_temperature02}}°C</p>
-                <p v-if="listItem.beizhu">备注{{listItem.beizhu}}</p>
-                <p v-if="listItem.yewubianhao">业务编号：{{listItem.yewubianhao}}</p>
-                <p>报警温度区间：{{listItem.baojingwendu_xiaxian}} ~ {{listItem.baojingwendu_shangxian}} °C</p>
-              </a-card>
-            </a-list-item>
-          </a-list>
-        </a-collapse-panel>
-      </template>
-    </a-collapse>
-  </div>
+  <page-header-wrapper :title="false">
+    <a-card :bordered="false">
+      <div class="table-page-search-wrapper listT">
+        <a-row :gutter="24">
+          <a-col style="margin-bottom: 20px">
+            <a-button
+              ref="downBtn"
+              type="primary"
+              icon="download"
+              href="http://192.168.2.126:8888/Dataplatform/execl/downRePushPaymentOrder"
+              download
+              @click="downLoadFn"
+              :disabled="isDisabled"
+            >
+              下载支付单模板</a-button
+            >
+          </a-col>
+          <a-col style="margin-bottom: 20px">
+            <a-row>
+              <a-col :span="2">
+                <a-upload
+                  name="file"
+                  :file-list="fileList"
+                  :multiple="false"
+                  :remove="handleRemove"
+                  :headers="headers"
+                  :before-upload="beforeUpload"
+                >
+                  <a-button> <a-icon type="upload" /> 重推支付单</a-button>
+                </a-upload>
+              </a-col>
+
+              <!-- 没有选择文件禁用按钮 -->
+              <a-col :span="12">
+                <a-button
+                  :disabled="!fileList.length"
+                  type="dashed"
+                  @click="uploadFile"
+                  >确定</a-button
+                >
+              </a-col>
+            </a-row>
+          </a-col>
+          <a-col>
+            <a-button type="primary" @click="restWsm()"> 重推wms</a-button>
+          </a-col>
+        </a-row>
+      </div>
+    </a-card>
+  </page-header-wrapper>
 </template>
 
 <script>
+import { uploadData, rePushPaymentOrder } from "@/api/monitor";
 export default {
-  data () {
+  data() {
     return {
-      activeKey: ['0', '1'],
-      lists: [
-        {
-          title: '淘宝，500449',
-          data: [
-            {
-              shebeibianhao: '516642',
-              last_temperature01: '33.6',
-              last_temperature02: '36.6',
-              beizhu: '',
-              yewubianhao: 'xxx',
-              baojingwendu_xiaxian: 0,
-              baojingwendu_shangxian: 10,
-              guigexinghao: 'TT'
-            },
-            {
-              shebeibianhao: '516642',
-              last_temperature01: '33.6',
-              last_temperature02: '36.6',
-              beizhu: '',
-              yewubianhao: 'xxx',
-              baojingwendu_xiaxian: 0,
-              baojingwendu_shangxian: 10,
-              guigexinghao: 'TT'
-            },
-            {
-              shebeibianhao: '516642',
-              last_temperature01: '33.6',
-              last_temperature02: '36.6',
-              beizhu: '',
-              yewubianhao: 'xxx',
-              baojingwendu_xiaxian: 0,
-              baojingwendu_shangxian: 10,
-              guigexinghao: 'TT'
-            },
-            {
-              shebeibianhao: '516642',
-              last_temperature01: '33.6',
-              last_temperature02: '36.6',
-              beizhu: '',
-              yewubianhao: 'xxx',
-              baojingwendu_xiaxian: 0,
-              baojingwendu_shangxian: 10,
-              guigexinghao: 'TT'
-            },
-            {
-              shebeibianhao: '516642',
-              last_temperature01: '33.6',
-              last_temperature02: '36.6',
-              beizhu: '',
-              yewubianhao: 'xxx',
-              baojingwendu_xiaxian: 0,
-              baojingwendu_shangxian: 10,
-              guigexinghao: 'TT'
-            },
-            {
-              shebeibianhao: '516642',
-              last_temperature01: '33.6',
-              last_temperature02: '36.6',
-              beizhu: '',
-              yewubianhao: 'xxx',
-              baojingwendu_xiaxian: 0,
-              baojingwendu_shangxian: 10,
-              guigexinghao: 'TT'
-            }
-          ]
-        },
-        {
-          title: '鸿天诚',
-          data: [
-            {
-              shebeibianhao: '516642',
-              last_temperature01: '33.6',
-              last_temperature02: '36.6',
-              beizhu: '',
-              yewubianhao: 'xxx',
-              baojingwendu_xiaxian: 0,
-              baojingwendu_shangxian: 10,
-              guigexinghao: 'TT'
-            },
-            {
-              shebeibianhao: '516642',
-              last_temperature01: '33.6',
-              last_temperature02: '36.6',
-              beizhu: '',
-              yewubianhao: 'xxx',
-              baojingwendu_xiaxian: 0,
-              baojingwendu_shangxian: 10,
-              guigexinghao: 'TT'
-            }
-          ]
-        }
-      ],
-      columns: [
-        {
-          title: '设备编号',
-          dataIndex: 'shebeibianhao'
-        },
-        {
-          title: '运单编号',
-          dataIndex: 'yundanbianhao'
-        }
-      ],
-      queryParam: {}
-    }
+      headers: {},
+      /* 是否禁用下载 - 默认可以下载 */
+      isDisabled: false,
+      /* 数组 */
+      fileList: [],
+    };
   },
+  mounted() {},
   methods: {
-    handleSearch () {
-    }
-  }
-}
+    async restWsm() {
+      const res = await rePushPaymentOrder({});
+      console.log(res, "ufslhE;FJHGFJLBHKG");
+    },
+    /* uploadFile */
+    async uploadFile() {
+      let fromData = new FormData();
+
+      if (this.fileList.length) {
+        fromData.append("file", this.fileList[0]);
+      }
+
+      const uploadBack = await uploadData(fromData);
+
+      let blob = new Blob([uploadBack.data], {
+        type: "application/x-xls;charset=utf-8",
+      });
+      let file_name = "重推支付单回执列表" + ".xlsx";
+
+      if (window.navigator.msSaveBlob) {
+        //IE
+        window.navigator.msSaveBlob(blob, file_name);
+      } else {
+        let link = document.createElement("a");
+        let href = window.URL.createObjectURL(blob);
+        link.href = href;
+        link.download = file_name;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link); // 下载完成移除元素
+        window.URL.revokeObjectURL(href); // 释放掉blob对象
+      }
+    },
+    /* 移除 */
+    handleRemove(file) {
+      const index = this.fileList.indexOf(file);
+      const newFileList = this.fileList.slice();
+      newFileList.splice(index, 1);
+      this.fileList = newFileList;
+    },
+    /* 禁止上传 */
+    beforeUpload(file) {
+      this.fileList = [file];
+      return false;
+    },
+    /* 下载 */
+    downLoadFn(falg = true) {
+      this.isDisabled = true;
+
+      !falg && this.$refs.downBtn.click();
+
+      /* 倒数计30分钟 */
+      const timeOut = setTimeout(() => {
+        clearTimeout(timeOut);
+        this.isDisabled = false;
+        this.downLoadFn(false);
+      }, 30 * 60 * 1000);
+    },
+  },
+};
 </script>
 
 <style>
-
 </style>

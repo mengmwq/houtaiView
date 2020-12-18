@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-25 11:10:16
- * @LastEditTime: 2020-12-01 14:55:37
+ * @LastEditTime: 2020-12-18 18:38:26
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \wlgl-antd\src\views\system\Activity\index.vue
@@ -30,10 +30,8 @@
                   >查询</a-button
                 >
                 <a-button style="margin-left: 8px"
-                  ><a
-                    href="http://192.168.20.53:8888//Dataplatform/execl/selectNotInShopSku2Execl"
-                    >下载</a
-                  ></a-button
+                @click="export222()"
+                  >下载</a-button
                 >
               </span>
             </a-col>
@@ -54,7 +52,7 @@
 </template>
 
 <script>
-import { selectNotInShopSkuList, ExportMarketing } from "@/api/device";
+import { selectNotInShopSkuList} from "@/api/device";
 const columns = [
   {
     title: "sku编码",
@@ -94,11 +92,23 @@ export default {
     this.GetWarningList();
   },
   methods: {
-    //下载活动列表
-    async downloading() {
-      const res = await ExportMarketing();
-      console.log(res);
+     export222() {
+      const lastTime = localStorage.getItem("lastTime");
+      if (lastTime && lastTime > new Date().getTime()/1000) {
+        //不可以点击
+        this.$message.warning("请不要连续下载！等待一分钟");
+        return false;
+      } // 这里点击的操作
+      var url =
+        "http://192.168.2.126:8888//Dataplatform/execl/selectNotInShopSku2Execl";
+      window.location.href = url;
+
+      window.localStorage.setItem(
+        "lastTime",
+        (new Date().getTime() / 1000) + 60 * 1
+      );
     },
+
     async GetWarningList(flag = true) {
       this.loading = true;
       /* const queryParam = {

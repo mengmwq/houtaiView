@@ -12,20 +12,20 @@ export const asyncRouterMap = [
     path: '/',
     name: 'index',
     component: BasicLayout,
-    redirect: '/dashboard',
+    redirect: '/system',
     meta: {
       title: '首页'
     },
     children: [
-      {
-        path: '/dashboard',
-        name: 'dashboard',
-        meta: {
-          title: '首页',
-          icon: 'home'
-        },
-        component: () => import('@/views/Dashboard')
-      },
+      // {
+      //   path: '/dashboard',
+      //   name: 'dashboard',
+      //   meta: {
+      //     title: '首页',
+      //     icon: 'home'
+      //   },
+      //   component: () => import('@/views/Dashboard')
+      // },
       {
         path: '/system',
         name: 'system',
@@ -93,11 +93,66 @@ export const asyncRouterMap = [
         {
           path: '/monitor',
           name: 'monitor ',
+          component: RouteView,
           meta: {
             title: '异常业务处理',
             icon: ' icon-rizhiyichang'
           },
-          component: () => import('@/views/monitor')
+          children: [
+            {
+              path: '/monitor/monitor',
+              name: 'monitor',
+              meta: {
+                title: '重推支付单'
+              },
+              component: () => import('@/views/monitor/monitor')
+            },
+            {
+              path: '/monitor/shunfen',
+              name: 'shunfen',
+              meta: {
+                title: '顺丰重推订单'
+              },
+              component: () => import('@/views/monitor/shunfen')
+            },
+            {
+              path: '/monitor/SingleBack',
+              name: 'SingleBack',
+              meta: {
+                title: '导出退单数据'
+              },
+              component: () => import('@/views/monitor/SingleBack')
+            },
+
+            {
+              path: 'http://192.168.2.126:8888/Dataplatform/execl/selectPayOrderPushError',
+              name: 'PaymentFailed',
+              meta: {
+                title: '导出商城推送支付单失败的订单',
+                target:"_blank"
+              },
+
+            },
+            {
+              path: 'http://192.168.2.126:8888/Dataplatform/execl/deliveryOvertimeList',
+              name: 'overtime',
+              meta: {
+                title: '导出超时未发货数据',
+                target:"_blank"
+              },
+
+            },
+            {
+              path: 'http://192.168.2.126:8888/Dataplatform/execl/selectOverSoldOrder',
+              name: 'oversell',
+              meta: {
+                title: '导出超售数据',
+                target:"_blank"
+              },
+
+            }
+          ]
+
         }
 
 
