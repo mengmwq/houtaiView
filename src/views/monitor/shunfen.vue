@@ -23,7 +23,7 @@
                 ref="downBtn"
                 type="primary"
                 icon="download"
-                href="http://192.168.2.126:8888/Dataplatform/execl/downRePushOrder
+                href="https://dataplatform.red-phoenix.com.cn/Dataplatform/execl/downRePushOrder
 "
                 download
                 @click="downLoadFn"

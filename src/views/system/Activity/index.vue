@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-25 11:10:16
- * @LastEditTime: 2020-12-18 18:35:59
+ * @LastEditTime: 2020-12-18 19:15:33
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \wlgl-antd\src\views\system\Activity\index.vue
@@ -141,8 +141,8 @@ export default {
   },
   methods: {
       export222() {
-      const lastTime = localStorage.getItem("lastTime");
-      if (lastTime && lastTime > new Date().getTime()/1000) {
+      const lastTimeactivity = localStorage.getItem("lastTimeactivity");
+      if (lastTimeactivity && lastTimeactivity > new Date().getTime()/1000) {
         //不可以点击
         this.$message.warning("请不要连续下载！等待一分钟");
         return false;
@@ -152,7 +152,7 @@ export default {
       window.location.href = url;
 
       window.localStorage.setItem(
-        "lastTime",
+        "lastTimeactivity",
         (new Date().getTime() / 1000) + 60 * 1
       );
     },

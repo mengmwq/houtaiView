@@ -125,7 +125,7 @@ export const asyncRouterMap = [
             },
 
             {
-              path: 'http://192.168.2.126:8888/Dataplatform/execl/selectPayOrderPushError',
+              path: '/Dataplatform/execl/selectPayOrderPushError',
               name: 'PaymentFailed',
               meta: {
                 title: '导出商城推送支付单失败的订单',
@@ -134,7 +134,7 @@ export const asyncRouterMap = [
 
             },
             {
-              path: 'http://192.168.2.126:8888/Dataplatform/execl/deliveryOvertimeList',
+              path: 'https://dataplatform.red-phoenix.com.cn/Dataplatform/execl/deliveryOvertimeList',
               name: 'overtime',
               meta: {
                 title: '导出超时未发货数据',
@@ -143,7 +143,7 @@ export const asyncRouterMap = [
 
             },
             {
-              path: 'http://192.168.2.126:8888/Dataplatform/execl/selectOverSoldOrder',
+              path: 'https://dataplatform.red-phoenix.com.cn/Dataplatform/execl/selectOverSoldOrder',
               name: 'oversell',
               meta: {
                 title: '导出超售数据',

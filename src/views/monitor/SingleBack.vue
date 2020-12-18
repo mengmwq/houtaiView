@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-12-18 13:56:23
- * @LastEditTime: 2020-12-18 18:25:40
+ * @LastEditTime: 2020-12-18 19:03:43
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \houtaiView\src\views\monitor\SingleBack.vue
@@ -45,18 +45,18 @@ export default {
       this.endTime = dateString[1];
     },
     export222() {
-      const lastTime = localStorage.getItem("lastTime");
-      if (lastTime && lastTime > new Date().getTime()/1000) {
+      const lastTimeSingleBack = localStorage.getItem("lastTimeSingleBack");
+      if (lastTimeSingleBack && lastTimeSingleBack > new Date().getTime()/1000) {
         //不可以点击
         this.$message.warning("请不要连续下载！等待一分钟");
         return false;
       } // 这里点击的操作
       var url =
-        "http://192.168.2.126:8888/Dataplatform/execl/selectReturnOrder?beginTime=' +beginTime +'&endTime=' + endTime";
+        "https://dataplatform.red-phoenix.com.cn/Dataplatform/execl/selectReturnOrder?beginTime=' +beginTime +'&endTime=' + endTime";
       window.location.href = url;
 
       window.localStorage.setItem(
-        "lastTime",
+        "lastTimeSingleBack",
         (new Date().getTime() / 1000) + 60 * 1
       );
     },
