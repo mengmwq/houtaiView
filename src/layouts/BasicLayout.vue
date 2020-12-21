@@ -185,8 +185,8 @@ export default {
 }
 .ant-pro-sider-menu-logo svg,
 .ant-pro-sider-menu-logo img {
-  height: 63px;
-  width: 120px;
+  height: 63px!important;
+  width: 120px!important;
   vertical-align: middle;
 }
 .ant-pro-sider-menu-sider.light .ant-pro-sider-menu-logo h1 {
