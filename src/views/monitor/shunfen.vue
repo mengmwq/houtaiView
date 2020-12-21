@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-27 18:18:59
- * @LastEditTime: 2020-12-18 18:34:41
+ * @LastEditTime: 2020-12-21 13:45:24
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \wlgl-antd\src\views\monitor.vue
@@ -110,32 +110,51 @@ export default {
   methods: {
     /* changeEnd */
     changeEnd({ file }) {
-      console.log(file);
-      console.log("在这里上传");
+      // console.log(file);
+      // console.log("在这里上传");
     },
     next() {
-      this.current++;
-      switch (this.current) {
-        case 1:
-          this.stepsContent = true;
+      // this.current++;
+      // switch (this.current) {
+      //   case 1:
+      //     this.stepsContent = true;
+      //     this.first = false;
+      //     this.sencd = true;
+      //       this.last=false
+      //     this.nexttext = "确定导入";
+      //     break;
+      //   case 2:
+      //     this.stepsContent = false;
+      //     this.first = false;
+      //     this.sencd = false;
+      //     this.last=false;
+      //     this.uploadFile();
+      //      this.next();
+      //     break;
+      //   default:
+      //     this.stepsContent = false;
+      //     this.first = false;
+      //     this.sencd = false;
+      //     this.last=true
+      // }
+         if (this.current == 0) {
+        this.current++;
+           this.stepsContent = true;
           this.first = false;
           this.sencd = true;
-            this.last=false
+          this.last = false;
           this.nexttext = "确定导入";
-          break;
-        case 2:
-          this.stepsContent = false;
-          this.first = false;
-          this.sencd = false;
-          this.last=false;
+      } else if (this.fileList.length == 0) {
+        this.$message.error("请选择文件");
+
+
+      }else{
           this.uploadFile();
-           this.next();
-          break;
-        default:
+          this.current++
           this.stepsContent = false;
           this.first = false;
           this.sencd = false;
-          this.last=true
+          this.last = true;
       }
     },
 

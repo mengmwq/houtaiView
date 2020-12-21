@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-27 18:18:59
- * @LastEditTime: 2020-12-18 17:02:24
+ * @LastEditTime: 2020-12-21 13:45:01
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \wlgl-antd\src\views\monitor.vue
@@ -9,12 +9,18 @@
 <template>
   <page-header-wrapper :title="false">
     <a-card :bordered="false">
-      <a-steps :current="current" style="margin-bottom:50px">
+      <a-steps :current="current" style="margin-bottom: 50px">
         <a-step v-for="item in steps" :key="item.title" :title="item.title" />
       </a-steps>
       <div
         :class="{ active: stepsContent }"
-        style="display:flex;justify-content: center;justify-content: center;height:300px;line-height:300px"
+        style="
+          display: flex;
+          justify-content: center;
+          justify-content: center;
+          height: 300px;
+          line-height: 300px;
+        "
       >
         <div>
           <a-row :gutter="24">
@@ -51,17 +57,20 @@
                   > -->
             </a-col>
             <a-col v-show="last">
-              <div >导入数据成功，详情请查看excel表格。</div>
-
+              <div>导入数据成功，详情请查看excel表格。</div>
             </a-col>
-
           </a-row>
         </div>
       </div>
     </a-card>
     <div
       class="steps-action"
-      style="display:flex;justify-content: center;justify-content: center;margin:30px 0"
+      style="
+        display: flex;
+        justify-content: center;
+        justify-content: center;
+        margin: 30px 0;
+      "
     >
       <a-button v-if="current < steps.length - 1" type="primary" @click="next">
         {{ nexttext }}
@@ -77,7 +86,8 @@
   </page-header-wrapper>
 </template>
 
-<script>import { uploadData } from "@/api/monitor";
+<script>
+import { uploadData } from "@/api/monitor";
 export default {
   data() {
     return {
@@ -88,54 +98,51 @@ export default {
       fileList: [],
       first: true,
       sencd: false,
-      last:false,
+      last: false,
       current: 0,
       stepsContent: false,
       nexttext: "下一步",
       steps: [
         {
-          title: "下载支付单模板"
+          title: "下载支付单模板",
         },
         {
-          title: "重推支付单"
+          title: "重推支付单",
         },
         {
-          title: "完成"
-        }
-      ]
+          title: "完成",
+        },
+      ],
     };
   },
   mounted() {},
   methods: {
     /* changeEnd */
     changeEnd({ file }) {
-      console.log(file);
-      console.log("在这里上传");
+      // console.log(file);
+      // console.log("在这里上传");
     },
     next() {
-      this.current++;
-      switch (this.current) {
-        case 1:
-          this.stepsContent = true;
+      if (this.current == 0) {
+        this.current++;
+           this.stepsContent = true;
           this.first = false;
           this.sencd = true;
-            this.last=false
+          this.last = false;
           this.nexttext = "确定导入";
-          break;
-        case 2:
-          this.stepsContent = false;
-          this.first = false;
-          this.sencd = false;
-          this.last=false;
+      } else if (this.fileList.length == 0) {
+        this.$message.error("请选择文件");
+
+
+      }else{
           this.uploadFile();
-           this.next();
-          break;
-        default:
+          this.current++
           this.stepsContent = false;
           this.first = false;
           this.sencd = false;
-          this.last=true
+          this.last = true;
       }
+
     },
 
     /* uploadFile */
@@ -149,7 +156,7 @@ export default {
       const uploadBack = await uploadData(fromData);
 
       let blob = new Blob([uploadBack.data], {
-        type: "application/x-xls;charset=utf-8"
+        type: "application/x-xls;charset=utf-8",
       });
       let file_name = "重推支付单回执列表" + ".xlsx";
 
@@ -191,8 +198,8 @@ export default {
         this.isDisabled = false;
         this.downLoadFn(false);
       }, 30 * 60 * 1000);
-    }
-  }
+    },
+  },
 };
 </script>
 

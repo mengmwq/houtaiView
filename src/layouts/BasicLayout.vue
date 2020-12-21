@@ -11,14 +11,14 @@
     :i18nRender="i18nRender"
     v-bind="settings"
   >
-    <setting-drawer :settings="settings" @change="handleSettingChange" />
+    <!-- <setting-drawer :settings="settings" @change="handleSettingChange" />
     <template v-slot:rightContentRender>
       <right-content
         :top-menu="settings.layout === 'topmenu'"
         :is-mobile="isMobile"
         :theme="settings.theme"
       />
-    </template>
+    </template> -->
     <template v-slot:footerRender>
       <div></div>
     </template>
@@ -27,17 +27,17 @@
 </template>
 
 <script>
-import { SettingDrawer } from "@ant-design-vue/pro-layout";
+// import { SettingDrawer } from "@ant-design-vue/pro-layout";
 import { CONTENT_WIDTH_TYPE, TOGGLE_MOBILE_TYPE } from "@/store/mutation-types";
-import RightContent from "@/components/GlobalHeader/RightContent";
+// import RightContent from "@/components/GlobalHeader/RightContent";
 import defaultSettings from "@/config/defaultSettings";
 import logoSrc from "@/assets/img/logo.png";
 import { asyncRouterMap } from "@/config/router.config";
 
 export default {
   components: {
-    SettingDrawer,
-    RightContent,
+    // SettingDrawer,
+    // RightContent,
   },
   data() {
     return {
