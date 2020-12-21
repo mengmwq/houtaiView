@@ -23,7 +23,7 @@
                 ref="downBtn"
                 type="primary"
                 icon="download"
-                href="https://dataplatform.red-phoenix.com.cn/Dataplatform/execl/downRePushPaymentOrder"
+                href="https:///Dataplatform/execl/downRePushPaymentOrder"
                 download
                 @click="downLoadFn"
                 :disabled="isDisabled"

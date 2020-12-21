@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-30 11:26:18
- * @LastEditTime: 2020-12-18 16:13:01
+ * @LastEditTime: 2020-12-21 11:58:24
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \houtaiView\src\views\monitor\General.vue
@@ -24,7 +24,7 @@
               ref="downBtn"
               type="primary"
               icon="download"
-              href="https://dataplatform.red-phoenix.com.cn/Dataplatform/execl/downRePushPaymentOrder"
+              href="http://192.168.2.126:8888/Dataplatform/execl/downRePushPaymentOrder"
               download
               @click="downLoadFn"
               :disabled="isDisabled"

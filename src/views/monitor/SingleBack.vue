@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-12-18 13:56:23
- * @LastEditTime: 2020-12-18 19:03:43
+ * @LastEditTime: 2020-12-21 12:01:37
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \houtaiView\src\views\monitor\SingleBack.vue
@@ -52,7 +52,7 @@ export default {
         return false;
       } // 这里点击的操作
       var url =
-        "https://dataplatform.red-phoenix.com.cn/Dataplatform/execl/selectReturnOrder?beginTime=' +beginTime +'&endTime=' + endTime";
+        "http://192.168.2.126:8888/Dataplatform/execl/selectReturnOrder?beginTime=' +beginTime +'&endTime=' + endTime";
       window.location.href = url;
 
       window.localStorage.setItem(

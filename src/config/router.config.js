@@ -134,7 +134,7 @@ export const asyncRouterMap = [
 
             },
             {
-              path: 'https://dataplatform.red-phoenix.com.cn/Dataplatform/execl/deliveryOvertimeList',
+              path: 'http://192.168.2.126:8888/Dataplatform/execl/deliveryOvertimeList',
               name: 'overtime',
               meta: {
                 title: '导出超时未发货数据',
@@ -143,7 +143,7 @@ export const asyncRouterMap = [
 
             },
             {
-              path: 'https://dataplatform.red-phoenix.com.cn/Dataplatform/execl/selectOverSoldOrder',
+              path: 'http://192.168.2.126:8888/Dataplatform/execl/selectOverSoldOrder',
               name: 'oversell',
               meta: {
                 title: '导出超售数据',
