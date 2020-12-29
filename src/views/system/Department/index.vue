@@ -1,15 +1,16 @@
 <!--
  * @Author: mjk
  * @Date: 2020-11-25 11:10:16
- * @LastEditTime: 2020-12-17 17:08:51
+ * @LastEditTime: 2020-12-24 17:02:49
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \wlgl-antd\src\views\system\Activity\index.vue
 -->
 <template>
-  <page-header-wrapper :title="false">
+    <a-spin :spinning="loader">
+  <page-header-wrapper :title="false"    >
     <a-card :bordered="false">
-      <div class="table-page-search-wrapper">
+      <div class="table-page-search-wrapper" :loading="loading">
         <a-form layout="inline">
           <a-row :gutter="48">
             <a-col :md="18" :sm="24">
@@ -150,20 +151,6 @@
                       DepartmentData.cdsReturnStatus
                     }}</span>
                     <!-- 创建时间：<span>{{ tradeState.createTimeStr }}</span> -->
-                  </p>
-                </a-col>
-              </a-row>
-              <a-row :gutter="24">
-                <a-col :span="7" :offset="2">
-                  <p>
-                    微信支付状态：<span>{{
-                      DepartmentData.weChatTradeState
-                    }}</span>
-                  </p>
-                </a-col>
-                <a-col :span="8">
-                  <p>
-                    支付时间：<span>{{ tradeState.payTimeStr }}</span>
                   </p>
                 </a-col>
               </a-row>
@@ -384,6 +371,7 @@
       </a-spin>
     </div>
   </page-header-wrapper>
+    </a-spin>
 </template>
 
 <script>
@@ -465,7 +453,7 @@ export default {
       tradeLogs,
       showDepartmentList: false,
       loader: false,
-      loading: false,
+      loading: true,
       tableData: [],
       tradeEventLogsData: [],
       DepartmentData: {},
@@ -475,9 +463,13 @@ export default {
       tradePrice: {},
     };
   },
-  mounted() {},
+  mounted() {
+  //  this.loader = true;
+  },
   methods: {
+
     async GetorderNoData() {
+
       if (
         this.queryParam.orderNo == undefined ||
         this.queryParam.orderNo == ""

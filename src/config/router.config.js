@@ -86,6 +86,14 @@ export const asyncRouterMap = [
               title: '超时未上新预警'
             },
             component: () => import('@/views/business/Device/index')
+          },
+          {
+            path: '/business/editTab',
+            name: 'editTab',
+            meta: {
+              title: '新'
+            },
+            component: () => import('@/views/business/Device/editTab')
           }
         ]
       },
@@ -134,7 +142,7 @@ export const asyncRouterMap = [
 
             },
             {
-              path: 'http://192.168.2.126:8888/Dataplatform/execl/deliveryOvertimeList',
+              path: 'http://192.168.20.85:8888/Dataplatform/execl/deliveryOvertimeList',
               name: 'overtime',
               meta: {
                 title: '导出超时未发货数据',
@@ -143,7 +151,7 @@ export const asyncRouterMap = [
 
             },
             {
-              path: 'http://192.168.2.126:8888/Dataplatform/execl/selectOverSoldOrder',
+              path: 'http://192.168.20.85:8888/Dataplatform/execl/selectOverSoldOrder',
               name: 'oversell',
               meta: {
                 title: '导出超售数据',

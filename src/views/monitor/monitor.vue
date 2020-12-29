@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-27 18:18:59
- * @LastEditTime: 2020-12-21 14:51:06
+ * @LastEditTime: 2020-12-21 19:31:20
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \wlgl-antd\src\views\monitor.vue
@@ -29,7 +29,7 @@
                 ref="downBtn"
                 type="primary"
                 icon="download"
-                href="https:///Dataplatform/execl/downRePushPaymentOrder"
+                href="http://192.168.20.85:8888/Dataplatform/execl/downRePushPaymentOrder"
                 download
                 @click="downLoadFn"
                 :disabled="isDisabled"
@@ -130,18 +130,24 @@ export default {
           this.sencd = true;
           this.last = false;
           this.nexttext = "确定导入";
+
+
       } else if (this.fileList.length == 0) {
+
         this.$message.error("请选择文件");
 
 
+
       }else{
+
           this.uploadFile();
           this.current++
+
           this.stepsContent = false;
           this.first = false;
           this.sencd = false;
           this.last = true;
-         this.$router.go(0)
+          //this.$router.go(0)
       }
 
 

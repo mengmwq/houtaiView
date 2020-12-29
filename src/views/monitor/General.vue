@@ -24,7 +24,7 @@
               ref="downBtn"
               type="primary"
               icon="download"
-              href="http://192.168.2.126:8888/Dataplatform/execl/downRePushPaymentOrder"
+              href="http://192.168.20.85:8888/Dataplatform/execl/downRePushPaymentOrder"
               download
               @click="downLoadFn"
               :disabled="isDisabled"

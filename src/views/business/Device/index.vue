@@ -100,7 +100,7 @@ export default {
         return false;
       } // 这里点击的操作
       var url =
-        "http://192.168.2.126:8888//Dataplatform/execl/selectNotInShopSku2Execl";
+        "http://192.168.20.85:8888/Dataplatform/execl/selectNotInShopSku2Execl";
       window.location.href = url;
 
       window.localStorage.setItem(

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-24 14:55:17
- * @LastEditTime: 2020-12-21 11:58:43
+ * @LastEditTime: 2020-12-29 13:20:28
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \wlgl-antd\vue.config.js
@@ -64,7 +64,7 @@ const vueConfig = {
   devServer: { // If you want to turn on the proxy, please remove the mockjs /src/main.jsL11
     proxy: {
       '/json': {
-        target: '172.17.71.130:8881/Dataplatform/',
+        target: 'http://192.168.20.85:8888/Dataplatform/',
         ws: false,
         // pathRewrite: '^/',
         changeOrigin: true

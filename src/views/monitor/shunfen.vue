@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-27 18:18:59
- * @LastEditTime: 2020-12-21 14:57:10
+ * @LastEditTime: 2020-12-21 19:28:37
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \wlgl-antd\src\views\monitor.vue
@@ -23,7 +23,7 @@
                 ref="downBtn"
                 type="primary"
                 icon="download"
-                href="http://192.168.2.126:8888/Dataplatform/execl/downRePushOrder
+                href="http://192.168.20.85:8888/Dataplatform/execl/downRePushOrder
 "
                 download
                 @click="downLoadFn"
@@ -52,10 +52,8 @@
                   > -->
             </a-col>
             <a-col v-show="last">
-              <div >导入数据成功，详情请查看excel表格。</div>
-
+              <div>导入数据成功，详情请查看excel表格。</div>
             </a-col>
-
           </a-row>
         </div>
       </div>
@@ -78,7 +76,8 @@
   </page-header-wrapper>
 </template>
 
-<script>import { uploadData } from "@/api/shunfen";
+<script>
+import { uploadData } from "@/api/shunfen";
 export default {
   data() {
     return {
@@ -89,7 +88,7 @@ export default {
       fileList: [],
       first: true,
       sencd: false,
-      last:false,
+      last: false,
       current: 0,
       stepsContent: false,
       nexttext: "下一步",
@@ -114,54 +113,37 @@ export default {
       // console.log("在这里上传");
     },
     next() {
-      // this.current++;
-      // switch (this.current) {
-      //   case 1:
-      //     this.stepsContent = true;
-      //     this.first = false;
-      //     this.sencd = true;
-      //       this.last=false
-      //     this.nexttext = "确定导入";
-      //     break;
-      //   case 2:
-      //     this.stepsContent = false;
-      //     this.first = false;
-      //     this.sencd = false;
-      //     this.last=false;
-      //     this.uploadFile();
-      //      this.next();
-      //     break;
-      //   default:
-      //     this.stepsContent = false;
-      //     this.first = false;
-      //     this.sencd = false;
-      //     this.last=true
-      // }
-         if (this.current == 0) {
+       if (this.current == 0) {
         this.current++;
            this.stepsContent = true;
           this.first = false;
           this.sencd = true;
           this.last = false;
           this.nexttext = "确定导入";
+
+
       } else if (this.fileList.length == 0) {
+
         this.$message.error("请选择文件");
 
 
+
       }else{
+
           this.uploadFile();
           this.current++
+
           this.stepsContent = false;
           this.first = false;
           this.sencd = false;
           this.last = true;
-          this.$router.go(0)
+           //this.$router.go(0)
       }
     },
 
     /* uploadFile */
     async uploadFile() {
-      let fromData = new FormData();
+         let fromData = new FormData();
 
       if (this.fileList.length) {
         fromData.append("file", this.fileList[0]);
@@ -170,9 +152,9 @@ export default {
       const uploadBack = await uploadData(fromData);
 
       let blob = new Blob([uploadBack.data], {
-        type: "application/x-xls;charset=utf-8"
+        type: "application/x-xls;charset=utf-8",
       });
-      let file_name = "重推订单回执列表" + ".xlsx";
+      let file_name = "重推支付单回执列表" + ".xlsx";
 
       if (window.navigator.msSaveBlob) {
         //IE
@@ -187,6 +169,7 @@ export default {
         document.body.removeChild(link); // 下载完成移除元素
         window.URL.revokeObjectURL(href); // 释放掉blob对象
       }
+
     },
     /* 移除 */
     handleRemove(file) {
